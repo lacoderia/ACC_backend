@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Document type:</strong>
+  <%= @user.document_type %>
+</p>
+
+<p>
+  <strong>Document:</strong>
+  <%= @user.document_id %>
+</p>
+
+<p>
+  <strong>Is member:</strong>
+  <%= @user.is_member %>
+</p>
+
+<p>
+  <strong>Agreement:</strong>
+  <%= @user.agreement_id %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @user.phone_number %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

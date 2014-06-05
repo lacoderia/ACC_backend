@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @vehicle.user_id %>
+</p>
+
+<p>
+  <strong>Plate number:</strong>
+  <%= @vehicle.plate_number %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @vehicle.brand %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @vehicle.model %>
+</p>
+
+<p>
+  <strong>Soat date:</strong>
+  <%= @vehicle.soat_date %>
+</p>
+
+<p>
+  <strong>Poliza date:</strong>
+  <%= @vehicle.poliza_date %>
+</p>
+
+<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
+<%= link_to 'Back', vehicles_path %>

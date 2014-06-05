@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  agreement_no: 1
+  name: MyString
+  logo: MyString
+  active: false
+
+two:
+  agreement_no: 1
+  name: MyString
+  logo: MyString
+  active: false

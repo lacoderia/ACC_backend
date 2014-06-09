@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'carpool/index'
+
   resources :vehicles
 
   resources :rides

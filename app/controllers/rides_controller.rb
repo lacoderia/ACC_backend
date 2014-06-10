@@ -61,6 +61,15 @@ class RidesController < ApplicationController
     end
   end
 
+  def detail    
+    @ride = Ride.find(params[:id])
+    @ride.user
+    @ride.users
+    respond_to do |format|
+      format.json {render :json => @ride, :include => {:user => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ride

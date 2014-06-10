@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
   get 'carpool/index'
 
+  #get 'rides/:id/detail' => 'rides#detail'
+
   resources :vehicles
 
-  resources :rides
+  resources :rides do
+    member do
+      get 'detail'
+    end
+  end
 
   resources :agreements
 

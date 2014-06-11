@@ -70,6 +70,13 @@ class RidesController < ApplicationController
     end
   end
 
+  def available
+    @rides = Ride.where('user_id != ? AND ride_when > ? AND seats > (select count(*) from rides_users where ride_id = id)', params[:user_id], Time.now).order(ride_when: :asc)
+    respond_to do |format|
+      format.json {render :json => @rides, :only => [:id, :origin, :destination]}
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ride

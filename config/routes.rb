@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     member do
       get 'detail'
     end
+    collection do
+      get 'available'
+    end
   end
 
   resources :agreements

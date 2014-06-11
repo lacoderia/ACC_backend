@@ -3,7 +3,7 @@ class CreateRides < ActiveRecord::Migration
     create_table :rides do |t|
       t.integer :agreement_id
       t.integer :user_id
-      t.datetime :when
+      t.datetime :ride_when
       t.text :origin
       t.text :destination
       t.float :cost

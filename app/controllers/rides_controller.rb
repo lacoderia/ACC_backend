@@ -1,6 +1,6 @@
 class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :verify_authenticity_token, :only => [:create]
+  #skip_before_filter :verify_authenticity_token, :only => [:create]
 
   # GET /rides
   # GET /rides.json

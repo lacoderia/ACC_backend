@@ -1,5 +1,6 @@
 class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, :only => [:create]
 
   # GET /rides
   # GET /rides.json
@@ -71,9 +72,10 @@ class RidesController < ApplicationController
   end
 
   def available
-    @rides = Ride.where('user_id != ? AND ride_when > ? AND seats > (select count(*) from rides_users where ride_id = id)', params[:user_id], Time.now).order(ride_when: :asc)
+    rides = Ride.where('user_id != ? AND ride_when > ? AND seats > (select count(*) from rides_users where ride_id = id)', params[:user_id], Time.now).order(ride_when: :asc)
+    result = {:rides => rides.select(:id, :origin, :destination, :ride_when)}
     respond_to do |format|
-      format.json {render :json => @rides, :only => [:id, :origin, :destination]}
+      format.json {render :json => result}      
     end
   end
 
@@ -85,6 +87,6 @@ class RidesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ride_params
-      params.require(:ride).permit(:agreement_id, :user_id, :when, :origin, :destination, :cost, :seats, :notes)
+      params.require(:ride).permit(:agreement_id, :user_id, :ride_when, :origin, :destination, :cost, :seats, :notes)
     end
 end

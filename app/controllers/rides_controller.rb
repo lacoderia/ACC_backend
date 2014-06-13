@@ -1,6 +1,6 @@
 class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :edit, :update, :destroy]
-  #skip_before_filter :verify_authenticity_token, :only => [:create]
+  skip_before_filter :verify_authenticity_token, :only => [:create, :book]
 
   # GET /rides
   # GET /rides.json
@@ -78,6 +78,21 @@ class RidesController < ApplicationController
       format.json {render :json => result}      
     end
   end
+
+  def book
+    ride = Ride.find(params[:id])
+    user_id = params[:user_id]
+    if (ride.seats > ride.users.size)
+      respond_to do |format|
+        format.json {render :json => {:success => true, :mensaje => 'ok'}}      
+      end
+    else
+      respond_to do |format|
+        format.json {render :json => {:success => false, :mensaje => 'Ya no hay cupo'}}      
+      end
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :rides do
     member do
       get 'detail'
+      post 'book'
     end
     collection do
       get 'available'

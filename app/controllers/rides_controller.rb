@@ -64,10 +64,10 @@ class RidesController < ApplicationController
 
   def detail    
     @ride = Ride.find(params[:id])
-    @ride.user
+    @ride.owner
     @ride.users
     respond_to do |format|
-      format.json {render :json => @ride, :include => {:user => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}
+      format.json {render :json => @ride, :include => {:owner => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}
     end
   end
 
@@ -81,14 +81,22 @@ class RidesController < ApplicationController
 
   def book
     ride = Ride.find(params[:id])
-    user_id = params[:user_id]
+    user = User.find(params[:user_id])
     if (ride.seats > ride.users.size)
-      respond_to do |format|
-        format.json {render :json => {:success => true, :mensaje => 'ok'}}      
+      if (ride.users.where('id = ?', user.id).size == 0)
+        ride.users << user
+        ride.save
+        respond_to do |format|
+          format.json {render :json => {:success => true, :mensaje => 'Tu lugar ha sido reservado', :ride => ride}, :include => {:owner => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}  
+        end
+      else
+        respond_to do |format|
+          format.json {render :json => {:success => false, :mensaje => 'Ya tienes un lugar reservado', :ride => ride}, :include => {:owner => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}  
+        end
       end
     else
       respond_to do |format|
-        format.json {render :json => {:success => false, :mensaje => 'Ya no hay cupo'}}      
+        format.json {render :json => {:success => false, :mensaje => 'Ya no hay cupo', :ride => ride}, :include => {:owner => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}  
       end
     end
   end

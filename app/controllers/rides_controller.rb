@@ -72,7 +72,7 @@ class RidesController < ApplicationController
   end
 
   def available
-    rides = Ride.where('user_id != ? AND ride_when > ? AND seats > (select count(*) from rides_users where ride_id = id)', params[:user_id], Time.now).order(ride_when: :asc)
+    rides = Ride.where('user_id != ? AND ride_when > ? AND seats > (select count(*) from rides_users where ride_id = id) AND id NOT IN (select ride_id from rides_users where user_id = ?)', params[:user_id], Time.now, params[:user_id]).order(ride_when: :asc)
     result = {:rides => rides.select(:id, :origin, :destination, :ride_when)}
     respond_to do |format|
       format.json {render :json => result}      
@@ -96,7 +96,7 @@ class RidesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.json {render :json => {:success => false, :mensaje => 'Ya no hay cupo', :ride => ride}, :include => {:owner => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}  
+        format.json {render :json => {:success => false, :mensaje => 'Ya no hay cupo en este viaje', :ride => ride}, :include => {:owner => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}  
       end
     end
   end

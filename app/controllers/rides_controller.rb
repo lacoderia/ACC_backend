@@ -87,16 +87,16 @@ class RidesController < ApplicationController
         ride.users << user
         ride.save
         respond_to do |format|
-          format.json {render :json => {:success => true, :mensaje => 'Tu lugar ha sido reservado', :ride => ride}, :include => {:owner => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}  
+          format.json {render :json => {:success => true, :message => 'Tu lugar ha sido reservado', :ride => ride}, :include => {:owner => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}  
         end
       else
         respond_to do |format|
-          format.json {render :json => {:success => false, :mensaje => 'Ya tienes un lugar reservado', :ride => ride}, :include => {:owner => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}  
+          format.json {render :json => {:success => false, :message => 'Ya tienes un lugar reservado', :ride => ride}, :include => {:owner => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}  
         end
       end
     else
       respond_to do |format|
-        format.json {render :json => {:success => false, :mensaje => 'Ya no hay cupo en este viaje', :ride => ride}, :include => {:owner => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}  
+        format.json {render :json => {:success => false, :message => 'Ya no hay cupo en este viaje', :ride => ride}, :include => {:owner => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}  
       end
     end
   end

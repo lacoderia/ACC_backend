@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions'}
+
+  devise_scope :user do
+    get 'logout', :to => 'devise/sessions#destroy'
+  end
+
   get 'carpool/index'
 
   #get 'rides/:id/detail' => 'rides#detail'

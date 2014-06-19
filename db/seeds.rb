@@ -8,9 +8,9 @@
 
 mercol = Agreement.create(agreement_no: 10, name: 'Automercol', active: true)
 
-user1 = User.create(first_name: 'Miguel Angel', last_name: 'Blanco Corredor', document_type: 'CC', document_id: '88167911', is_member: false, agreement_id: mercol.id)
-user2 = User.create(first_name: 'Katerin', last_name: 'Florez Forero', document_type: 'CC', document_id: '52152064', is_member: false, agreement_id: mercol.id)
-user3 = User.create(first_name: 'Jairo', last_name: 'Varela Grecco', document_type: 'CC', document_id: '8672861', is_member: false, agreement_id: mercol.id)
+user1 = User.create(first_name: 'Miguel Angel', last_name: 'Blanco Corredor', document_type: 'CC', document_id: '88167911', is_member: false, agreement_id: mercol.id, password: '12345678', email: 'a@a.com')
+user2 = User.create(first_name: 'Katerin', last_name: 'Florez Forero', document_type: 'CC', document_id: '52152064', is_member: false, agreement_id: mercol.id, password: '12345678', email: 'b@a.com')
+user3 = User.create(first_name: 'Jairo', last_name: 'Varela Grecco', document_type: 'CC', document_id: '8672861', is_member: false, agreement_id: mercol.id, password: '12345678', email: 'c@a.com')
 
 ride1 = Ride.create(agreement_id: mercol.id, user_id: user1.id, ride_when: '2014-06-20 10:00:00', origin: 'La Esperanza', destination: 'Calle 50', cost: 0, seats: 2, notes: 'Nos vemos en el estacionamiento')
 ride2 = Ride.create(agreement_id: mercol.id, user_id: user2.id, ride_when: '2014-06-21 11:00:00', origin: 'Calle 20', destination: 'Bocayá', cost: 10.5, seats: 4, notes: 'Camioneta negra afuera de la oficina')

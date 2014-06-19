@@ -5,6 +5,9 @@ class AgreementsController < ApplicationController
   # GET /agreements.json
   def index
     @agreements = Agreement.all
+    if (params[:min] == "true")
+      render :partial => 'show_custom', :content_type => 'application/json'
+    end
   end
 
   # GET /agreements/1

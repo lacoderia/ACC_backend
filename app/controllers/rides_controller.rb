@@ -66,9 +66,6 @@ class RidesController < ApplicationController
     @ride = Ride.find(params[:id])
     @ride.owner
     @ride.users
-    respond_to do |format|
-      format.json {render :json => @ride, :include => {:owner => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}
-    end
   end
 
   def available

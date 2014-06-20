@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get 'logout', :to => 'devise/sessions#destroy'
+    post 'login', :to => 'sessions#login'
+    post 'logout', :to => 'sessions#logout'
   end
 
   get 'carpool/index'

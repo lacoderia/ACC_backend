@@ -69,32 +69,25 @@ class RidesController < ApplicationController
   end
 
   def available
-    rides = Ride.where('user_id != ? AND ride_when > ? AND seats > (select count(*) from rides_users where ride_id = id) AND id NOT IN (select ride_id from rides_users where user_id = ?)', params[:user_id], Time.now, params[:user_id]).order(ride_when: :asc)
-    result = {:rides => rides.select(:id, :origin, :destination, :ride_when)}
-    respond_to do |format|
-      format.json {render :json => result}      
-    end
+    @rides = Ride.where('user_id != ? AND ride_when > ? AND seats > (select count(*) from rides_users where ride_id = id) AND id NOT IN (select ride_id from rides_users where user_id = ?)', params[:user_id], Time.now, params[:user_id]).order(ride_when: :asc)
   end
 
   def book
-    ride = Ride.find(params[:id])
+    @ride = Ride.find(params[:id])
     user = User.find(params[:user_id])
-    if (ride.seats > ride.users.size)
-      if (ride.users.where('id = ?', user.id).size == 0)
-        ride.users << user
-        ride.save
-        respond_to do |format|
-          format.json {render :json => {:success => true, :message => 'Tu lugar ha sido reservado', :ride => ride}, :include => {:owner => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}  
-        end
+    if (@ride.seats > @ride.users.size)
+      if (@ride.users.where('id = ?', user.id).size == 0)
+        @ride.users << user
+        @ride.save
+        @success = true
+        @message = 'Tu lugar ha sido reservado'
       else
-        respond_to do |format|
-          format.json {render :json => {:success => false, :message => 'Ya tienes un lugar reservado', :ride => ride}, :include => {:owner => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}  
-        end
+        @success = false
+        @message = 'Ya tienes un lugar reservado'
       end
     else
-      respond_to do |format|
-        format.json {render :json => {:success => false, :message => 'Ya no hay cupo en este viaje', :ride => ride}, :include => {:owner => {:only => [:id, :first_name, :last_name]}, :users => {:only => [:id, :first_name, :last_name]}}}  
-      end
+      @success = false
+      @message = 'Ya no hay cupo en este viaje'
     end
   end
 

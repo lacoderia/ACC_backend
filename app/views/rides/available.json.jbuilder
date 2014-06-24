@@ -1,0 +1,1 @@
+json.rides @rides, :id, :origin, :destination, :ride_when

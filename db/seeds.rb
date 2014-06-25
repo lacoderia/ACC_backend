@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-mercol = Agreement.create(agreement_no: 10, name: 'Automercol', active: true)
+mercol = Agreement.create(agreement_no: 10, name: 'Automóvil Club Colombia', active: true, mail_domain: 'acc.com.co')
 
 user1 = User.create(first_name: 'Miguel Angel', last_name: 'Blanco Corredor', document_type: 'CC', document_id: '88167911', is_member: false, agreement_id: mercol.id, password: '12345678', email: 'a@a.com')
 user2 = User.create(first_name: 'Katerin', last_name: 'Florez Forero', document_type: 'CC', document_id: '52152064', is_member: false, agreement_id: mercol.id, password: '12345678', email: 'b@a.com')

@@ -7,9 +7,14 @@ class SessionsController < Devise::SessionsController
     resource = User.find_for_database_authentication({:document_type => params[:document_type], :document_id => params[:document_id]})
     return invalid_login_attempt unless resource
     if resource.valid_password?(params[:password])
-      sign_in(:user, resource)
-      render :json => {:success => true, :user => resource}
-      return
+      if (resource.confirmed?)
+        sign_in(:user, resource)
+        render :json => {:success => true, :user => resource}
+        return
+      else
+        unconfirmed_login_attempt
+        return
+      end
     end	
     invalid_login_attempt
   end
@@ -24,7 +29,11 @@ class SessionsController < Devise::SessionsController
   protected
 
   def invalid_login_attempt
-    render :json=> {:success => false, :message => "Los datos introducidos son incorrectos"}, :status => 401
+    render :json => {:success => false, :message => "Los datos introducidos son incorrectos"}, :status => 401
+  end
+
+  def unconfirmed_login_attempt
+    render :json => {:success => false, :message => "Necesitas activar tu cuenta primero desde el correo que recibiste al registrarte"}, :status => 401
   end
 
 end

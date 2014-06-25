@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'logout', :to => 'devise/sessions#destroy'
     post 'login', :to => 'sessions#login'
     post 'logout', :to => 'sessions#logout'
+    #post 'register', :to => 'registrations#create'
   end
 
   get 'carpool/index'

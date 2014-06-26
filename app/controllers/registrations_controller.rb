@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
   	build_resource(sign_up_params)
-    
+
     begin
       resource_saved = resource.save
     rescue => e
@@ -25,7 +25,11 @@ class RegistrationsController < Devise::RegistrationsController
       @message = 'Tu registro se completó exitosamente. Te hemos enviado un correo electrónico con las instrucciones para activar tu cuenta.'
     else
       @success = false
-      @message = 'Ya existe un usuario registrado con el correo electrónico ' + resource.email
+      if resource.errors[:password_confirmation].size > 0
+        @message = "El valor de la confirmación no es igual al de la contraseña"
+      elsif resource.errors[:email].size > 0
+        @message = 'Ya existe un usuario registrado con el correo electrónico ' + resource.email
+      end
     end
   end
 

@@ -29,11 +29,11 @@ class SessionsController < Devise::SessionsController
   protected
 
   def invalid_login_attempt
-    render :json => {:success => false, :message => "Los datos introducidos son incorrectos"}, :status => 401
+    render :json => {:success => false, :message => "Los datos introducidos son incorrectos"}, :status => 200
   end
 
   def unconfirmed_login_attempt
-    render :json => {:success => false, :message => "Necesitas activar tu cuenta primero desde el correo que recibiste al registrarte"}, :status => 401
+    render :json => {:success => false, :message => "Necesitas activar tu cuenta primero desde el correo que recibiste al registrarte"}, :status => 200
   end
 
 end

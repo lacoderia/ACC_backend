@@ -14,7 +14,7 @@ class RegistrationsController < Devise::RegistrationsController
       resource_saved = resource.save
     rescue => e
       @success = false
-      @message = 'Ya existe un usuario registrado con esos datos de identificación'
+      @message = 'Ya existe un usuario registrado con esos datos de identificación.'
       return
     end
 
@@ -26,7 +26,7 @@ class RegistrationsController < Devise::RegistrationsController
     else
       @success = false
       if resource.errors[:password_confirmation].size > 0
-        @message = "El valor de la confirmación no es igual al de la contraseña"
+        @message = "El valor de la confirmación no es igual al de la contraseña."
       elsif resource.errors[:email].size > 0
         @message = 'Ya existe un usuario registrado con el correo electrónico ' + resource.email
       end

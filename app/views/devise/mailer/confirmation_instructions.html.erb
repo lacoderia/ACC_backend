@@ -1,5 +1,5 @@
-<p>Bienvenido al Automóvil Club de Colombia <%= @email %>!</p>
+<p>¡Bienvenido al Automóvil Club de Colombia <%= @resource.first_name %>!</p>
 
-<p>Para activar tu cuenta solamente da click en la liga que aparece a continuación:</p>
+<p>Para activar tu cuenta solamente haz click en la liga que aparece a continuación:</p>
 
 <p><%= link_to 'Activar mi cuenta', confirmation_url(@resource, confirmation_token: @token) %></p>

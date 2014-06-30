@@ -70,6 +70,7 @@ class RidesController < ApplicationController
 
   def available
     @rides = Ride.where('user_id != ? AND ride_when > ? AND seats > (select count(*) from rides_users where ride_id = id) AND id NOT IN (select ride_id from rides_users where user_id = ?)', params[:user_id], Time.now, params[:user_id]).order(ride_when: :asc)
+    @hash = Digest::MD5.hexdigest(@rides.to_json)
   end
 
   def book
@@ -80,14 +81,14 @@ class RidesController < ApplicationController
         @ride.users << user
         @ride.save
         @success = true
-        @message = 'Tu lugar ha sido reservado'
+        @message = 'Tu lugar ha sido reservado.'
       else
         @success = false
-        @message = 'Ya tienes un lugar reservado'
+        @message = 'Ya tienes un lugar reservado.'
       end
     else
       @success = false
-      @message = 'Ya no hay cupo en este viaje'
+      @message = 'Ya no hay cupo en este viaje.'
     end
   end
 

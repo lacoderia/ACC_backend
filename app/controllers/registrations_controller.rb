@@ -9,15 +9,18 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
   	build_resource(sign_up_params)
-
+    vehicle = nil
+    if params[:vehicle]
+      vehicle = Vehicle.new(vehicle_params)
+    end
     begin
+      resource.vehicles << vehicle if vehicle != nil
       resource_saved = resource.save
     rescue => e
       @success = false
-      @message = 'Ya existe un usuario registrado con esos datos de identificación.'
+      @message = e.message.index('plate_number') ? 'Ya existe un vehículo registrado con esa placa' : 'Ya existe un usuario registrado con esos datos de identificación.'
       return
     end
-
     yield resource if block_given?
     @user = resource
     if resource_saved
@@ -31,6 +34,12 @@ class RegistrationsController < Devise::RegistrationsController
         @message = 'Ya existe un usuario registrado con el correo electrónico ' + resource.email
       end
     end
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  private 
+  def vehicle_params
+    params.require(:vehicle).permit(:plate_number, :brand, :model, :soat_date, :document_type_owner, :document_id_owner)
   end
 
 end

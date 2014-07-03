@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, :only => [:add_vehicle]
 
   # GET /users
   # GET /users.json
@@ -61,6 +62,27 @@ class UsersController < ApplicationController
     end
   end
 
+  def detail    
+    @user = User.find(params[:id])
+    @user.vehicles
+  end
+
+  def add_vehicle
+    @vehicle = Vehicle.new(vehicle_params)
+    user = User.find(params[:id])
+    begin
+      user.vehicles << @vehicle
+      user.save
+    rescue => e
+      @success = false
+      @message = 'Ya existe un vehículo registrado con esa placa.'
+      return
+    end
+    @success = true
+    @message = 'El vehículo se registró correctamente.'
+    @vehicle = Vehicle.find_by_plate_number(@vehicle.plate_number)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -69,6 +91,12 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :document_type, :document_id, :is_member, :agreement_id, :phone_number, :email)
+      params.require(:user).permit(:first_name, :last_name, :document_type, :document_id, :is_member, :agreement_id, :phone_number, :email, :picture, :vehicles)
+    end
+
+    private
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def vehicle_params
+      params.require(:vehicle).permit(:plate_number, :brand, :model, :soat_date, :document_type_owner, :document_id_owner)
     end
 end

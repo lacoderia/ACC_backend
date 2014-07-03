@@ -26,7 +26,12 @@ Rails.application.routes.draw do
 
   resources :agreements
 
-  resources :users
+  resources :users do
+    member do
+      get 'detail'
+      post 'add_vehicle'
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

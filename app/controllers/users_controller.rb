@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :verify_authenticity_token, :only => [:add_vehicle]
+  skip_before_filter :verify_authenticity_token, :only => [:add_vehicle, :remove_vehicle]
 
   # GET /users
   # GET /users.json
@@ -79,8 +79,22 @@ class UsersController < ApplicationController
       return
     end
     @success = true
-    @message = 'El vehículo se registró correctamente.'
+    @message = 'El vehículo se asoció correctamente a tu cuenta.'
     @vehicle = Vehicle.find_by_plate_number(@vehicle.plate_number)
+  end
+
+  def remove_vehicle
+    @user = User.find(params[:id])
+    vehicle = Vehicle.find_by_plate_number(params[:vehicle][:plate_number])
+    begin
+      @user.vehicles.delete(@user.vehicles.find(vehicle.id))
+    rescue => e
+      @success = false
+      @message = "El vehículo no existe o ya fue desoasociado de tu cuenta."
+      return
+    end
+    @success = true
+    @message = 'El vehículo ya no está asociado a tu cuenta.'
   end
 
   private

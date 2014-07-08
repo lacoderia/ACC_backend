@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     member do
       get 'detail'
       post 'add_vehicle'
+      post 'remove_vehicle'
     end
   end
 

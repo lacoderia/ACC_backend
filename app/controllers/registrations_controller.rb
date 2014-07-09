@@ -11,14 +11,21 @@ class RegistrationsController < Devise::RegistrationsController
   	build_resource(sign_up_params)
     vehicle = nil
     if params[:vehicle]
-      vehicle = Vehicle.new(vehicle_params)
+      vehicle = Vehicle.find_by_plate_number(params[:vehicle][:plate_number])
+      if (vehicle != nil)
+        is_new = false
+      else
+        vehicle = Vehicle.new(vehicle_params)
+        is_new = true
+      end
     end
     begin
       resource.vehicles << vehicle if vehicle != nil
       resource_saved = resource.save
     rescue => e
       @success = false
-      @message = e.message.index('plate_number') ? 'Ya existe un vehículo registrado con esa placa' : 'Ya existe un usuario registrado con esos datos de identificación.'
+      @message = 'Ya existe un usuario registrado con esos datos de identificación.'
+      #@message = e.message.index('plate_number') ? 'Ya existe un vehículo registrado con esa placa' : 'Ya existe un usuario registrado con esos datos de identificación.'
       return
     end
     yield resource if block_given?
@@ -26,6 +33,7 @@ class RegistrationsController < Devise::RegistrationsController
     if resource_saved
       @success = true
       @message = 'Tu registro se completó exitosamente. Te hemos enviado un correo electrónico con las instrucciones para activar tu cuenta.'
+      @message += ' El vehículo se asoció a tu cuenta pero fue registrado anteriormente por otro usuario.' unless is_new
     else
       @success = false
       if resource.errors[:password_confirmation].size > 0

@@ -1,7 +1,7 @@
 class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, :only => [:create, :book]
-
+  
   # GET /rides
   # GET /rides.json
   def index
@@ -27,14 +27,22 @@ class RidesController < ApplicationController
   def create
     @ride = Ride.new(ride_params)
 
-    respond_to do |format|
+    if @ride.ride_when > Time.now 
       if @ride.save
-        format.html { redirect_to @ride, notice: 'Ride was successfully created.' }
-        format.json { render :show, status: :created, location: @ride }
+        @success = true
+        @message = "El viaje se ha publicado correctamente."
+        #format.html { redirect_to @ride, notice: 'Ride was successfully created.' }
+        #format.json { render :show, status: :created, location: @ride }
       else
-        format.html { render :new }
-        format.json { render json: @ride.errors, status: :unprocessable_entity }
+        @success = false
+        @message = "Ocurrió un error y el viaje no fue publicado. Intenta nuevamente."
+        #format.html { render :new }
+        #format.json { render json: @ride.errors, status: :unprocessable_entity }
       end
+    else
+      @success = false
+      @message = "La fecha y hora del viaje debe ser posteriores a la fecha y hora actuales."
+      #format.html { render :new }
     end
   end
 

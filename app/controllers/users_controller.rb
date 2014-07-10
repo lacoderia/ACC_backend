@@ -68,12 +68,12 @@ class UsersController < ApplicationController
   end
 
   def add_vehicle
-    user = User.find(params[:id])
-    @vehicle = Vehicle.find_by_plate_number(params[:vehicle][:plate_number])
+    @user = User.find(params[:id])
+    vehicle = Vehicle.find_by_plate_number(params[:vehicle][:plate_number])
     
-    if @vehicle != nil
+    if vehicle != nil
       begin
-        if user.vehicles.find(@vehicle.id) != nil
+        if @user.vehicles.find(vehicle.id) != nil
           @success = false
           @message = 'Ya tienes asociado este vehículo a tu cuenta.'
           return
@@ -83,15 +83,14 @@ class UsersController < ApplicationController
       is_new = false
       #owner = User.where('document_type == ? AND document_id == ?', @vehicle.document_type_owner, @vehicle.document_id_owner)[0]
     else
-      @vehicle = Vehicle.new(vehicle_params)
+      vehicle = Vehicle.new(vehicle_params)
       is_new = true
     end
     
-    user.vehicles << @vehicle
-    user.save
+    @user.vehicles << vehicle
+    @user.save
     @success = true
     @message = is_new ? 'El vehículo se registró y asoció correctamente a tu cuenta.' : 'El vehículo se asoció a tu cuenta pero fue registrado anteriormente por otro usuario.'
-    @vehicle = Vehicle.find_by_plate_number(@vehicle.plate_number) unless !is_new
   end
 
   def remove_vehicle

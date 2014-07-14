@@ -82,7 +82,9 @@ class UsersController < ApplicationController
    # only on *nix
     data.content_type = IO.popen(["file", "--brief", "--mime-type",tmp.path], 
       in: :close, err: :close).read.chomp
-    user.avatar = data;
+    puts 'diego '
+    puts user.to_json
+    user.avatar = data
     if user.save
       @success = true
       @message = 'La foto se actualizó correctamente.'

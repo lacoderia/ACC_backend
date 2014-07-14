@@ -91,7 +91,7 @@ class UsersController < ApplicationController
       @success = false
       @message = user.errors.to_json#'Ocurrió un error al cambiar la foto. Favor de intentar nuevamente.'
     end
-    File.delete("#{params[:id]}.png", 'wb')
+    File.delete("#{params[:id]}.png")
   end
 
   def add_vehicle

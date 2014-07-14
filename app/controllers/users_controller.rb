@@ -69,7 +69,7 @@ class UsersController < ApplicationController
 
   def change_avatar
     user = User.find(params[:id])
-    data = StringIO.new(Base64.decode64(params[:user][:avatar])
+    data = StringIO.new(Base64.decode64(params[:user][:avatar]))
     data.class.class_eval { attr_accessor :original_filename, :content_type }
     #data.original_filename = params[:account][:avatar][:filename]
     #data.content_type = params[:account][:avatar][:content_type]

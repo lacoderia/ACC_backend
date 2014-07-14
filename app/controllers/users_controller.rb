@@ -69,17 +69,21 @@ class UsersController < ApplicationController
 
   def change_avatar
     user = User.find(params[:id])
-    data = StringIO.new(Base64.decode64(params[:user][:avatar]))
-    data.class.class_eval { attr_accessor :content_type }
-    tmp = Tempfile.new("base64")
-    tmp.binmode
-    tmp.write(data.read)
-    tmp.close
+    #data = StringIO.new(Base64.decode64(params[:user][:avatar]))
+    #data.class.class_eval { attr_accessor :content_type }
+    #tmp = Tempfile.new("base64")
+    #tmp.binmode
+    #tmp.write(data.read)
+    #tmp.close
 
    # only on *nix
-    data.content_type = IO.popen(["file", "--brief", "--mime-type",tmp.path], 
-      in: :close, err: :close).read.chomp
-    user.avatar = data
+    #data.content_type = IO.popen(["file", "--brief", "--mime-type",tmp.path], 
+    #  in: :close, err: :close).read.chomp 
+    
+    newFile = File.new("#{params[:id]}.png", 'wb')
+    newFile.write(Base64.decode64(params[:user][:avatar]))
+
+    user.avatar = newFile
     if user.save
       @success = true
       @message = 'La foto se actualizó correctamente.'
@@ -87,6 +91,7 @@ class UsersController < ApplicationController
       @success = false
       @message = user.errors.to_json#'Ocurrió un error al cambiar la foto. Favor de intentar nuevamente.'
     end
+    File.delete("#{params[:id]}.png", 'wb')
   end
 
   def add_vehicle

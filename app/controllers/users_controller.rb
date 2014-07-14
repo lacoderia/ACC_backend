@@ -69,7 +69,7 @@ class UsersController < ApplicationController
 
   def change_avatar
     user = User.find(params[:id])
-    data = StringIO.new(Base64.decode64(params[:user][:avatar][:data]))
+    data = StringIO.new(Base64.decode64(params[:user][:avatar])
     data.class.class_eval { attr_accessor :original_filename, :content_type }
     #data.original_filename = params[:account][:avatar][:filename]
     #data.content_type = params[:account][:avatar][:content_type]
@@ -82,8 +82,6 @@ class UsersController < ApplicationController
    # only on *nix
     data.content_type = IO.popen(["file", "--brief", "--mime-type",tmp.path], 
       in: :close, err: :close).read.chomp
-    puts 'diego '
-    puts user.to_json
     user.avatar = data
     if user.save
       @success = true
@@ -142,12 +140,12 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :document_type, :document_id, :is_member, :agreement_id, :phone_number, :email, :vehicles)
+      params.require(:user).permit(:first_name, :last_name, :document_type, :document_id, :is_member, :agreement_id, :phone_number, :email, :vehicles, :avatar)
     end
 
     private
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_params
-      params.require(:vehicle).permit(:plate_number, :brand, :model, :soat_date, :document_type_owner, :document_id_owner, :avatar)
+      params.require(:vehicle).permit(:plate_number, :brand, :model, :soat_date, :document_type_owner, :document_id_owner)
     end
 end

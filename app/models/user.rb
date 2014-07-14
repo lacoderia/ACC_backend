@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
 
 	before_save :ensure_authentication_token
 
+  has_attached_file :avatar, :styles => { :medium => "200x200>", :thumb => "40x40>" }, :default_url => "http://166.78.117.195/images/default_:style.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
 	has_many :my_rides, :foreign_key => :user_id, :class_name => 'Ride' 
 	has_and_belongs_to_many :rides
   has_and_belongs_to_many :vehicles

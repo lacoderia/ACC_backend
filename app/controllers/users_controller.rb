@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :verify_authenticity_token, :only => [:add_vehicle, :remove_vehicle]
+  skip_before_filter :verify_authenticity_token, :only => [:add_vehicle, :remove_vehicle, :change_avatar]
 
   # GET /users
   # GET /users.json
@@ -67,6 +67,31 @@ class UsersController < ApplicationController
     @user.vehicles
   end
 
+  def change_avatar
+    user = User.find(params[:id])
+    data = StringIO.new(Base64.decode64(params[:user][:avatar][:data]))
+    data.class.class_eval { attr_accessor :original_filename, :content_type }
+    #data.original_filename = params[:account][:avatar][:filename]
+    #data.content_type = params[:account][:avatar][:content_type]
+    #params[:account][:avatar] = data
+    tmp = Tempfile.new("base64")
+    tmp.binmode
+    tmp.write(data.read)
+    tmp.close
+
+   # only on *nix
+    data.content_type = IO.popen(["file", "--brief", "--mime-type",tmp.path], 
+      in: :close, err: :close).read.chomp
+    user.avatar = data;
+    if user.save
+      @success = true
+      @message = 'La foto se actualizó correctamente.'
+    else
+      @success = false
+      @message = 'Ocurrió un error al cambiar la foto. Favor de intentar nuevamente.'
+    end
+  end
+
   def add_vehicle
     @user = User.find(params[:id])
     vehicle = Vehicle.find_by_plate_number(params[:vehicle][:plate_number])
@@ -115,12 +140,12 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :document_type, :document_id, :is_member, :agreement_id, :phone_number, :email, :picture, :vehicles)
+      params.require(:user).permit(:first_name, :last_name, :document_type, :document_id, :is_member, :agreement_id, :phone_number, :email, :vehicles)
     end
 
     private
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_params
-      params.require(:vehicle).permit(:plate_number, :brand, :model, :soat_date, :document_type_owner, :document_id_owner)
+      params.require(:vehicle).permit(:plate_number, :brand, :model, :soat_date, :document_type_owner, :document_id_owner, :avatar)
     end
 end

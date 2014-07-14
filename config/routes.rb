@@ -10,8 +10,6 @@ Rails.application.routes.draw do
 
   get 'carpool/index'
 
-  #get 'rides/:id/detail' => 'rides#detail'
-
   resources :vehicles
 
   resources :rides do
@@ -31,6 +29,7 @@ Rails.application.routes.draw do
       get 'detail'
       post 'add_vehicle'
       post 'remove_vehicle'
+      post 'change_avatar'
     end
   end
 

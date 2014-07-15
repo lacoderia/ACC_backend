@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
       self.authentication_token = generate_authentication_token
     end
   end
- 
+
   private
   
   def generate_authentication_token
@@ -29,5 +29,5 @@ class User < ActiveRecord::Base
       break token unless User.where(authentication_token: token).first
     end
   end
-  
+
 end

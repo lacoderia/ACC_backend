@@ -68,21 +68,10 @@ class UsersController < ApplicationController
   end
 
   def change_avatar
-    user = User.find(params[:id])
-    #data = StringIO.new(Base64.decode64(params[:user][:avatar]))
-    #data.class.class_eval { attr_accessor :content_type }
-    #tmp = Tempfile.new("base64")
-    #tmp.binmode
-    #tmp.write(data.read)
-    #tmp.close
-
-   # only on *nix
-    #data.content_type = IO.popen(["file", "--brief", "--mime-type",tmp.path], 
-    #  in: :close, err: :close).read.chomp 
-    
     newFile = File.new("#{params[:id]}.png", 'wb')
     newFile.write(Base64.decode64(params[:user][:avatar]))
 
+    user = User.find(params[:id])
     user.avatar = newFile
     if user.save
       @success = true
@@ -90,7 +79,7 @@ class UsersController < ApplicationController
       @avatar = user.avatar.url(:medium)
     else
       @success = false
-      @message = user.errors.to_json#'Ocurrió un error al cambiar la foto. Favor de intentar nuevamente.'
+      @message = 'Ocurrió un error al cambiar la foto. Favor de intentar nuevamente.'
     end
     File.delete("#{params[:id]}.png")
   end

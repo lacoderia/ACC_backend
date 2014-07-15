@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
 	before_save :ensure_authentication_token
 
-  has_attached_file :avatar, :styles => { :medium => "200x200>", :thumb => "40x40>" }, :url => "/:class/:attachment/:id/:style", :default_url => "/:class/:attachment/default.png"
+  has_attached_file :avatar, :styles => { :medium => "200x200#", :thumb => "40x40#" }, :url => "/:class/:attachment/:id/:style.png", :default_url => "/:class/:attachment/default.png"
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png"]
   #do_not_validate_attachment_file_type :avatar
 

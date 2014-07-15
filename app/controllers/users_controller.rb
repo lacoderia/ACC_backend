@@ -87,6 +87,7 @@ class UsersController < ApplicationController
     if user.save
       @success = true
       @message = 'La foto se actualizó correctamente.'
+      @avatar = user.avatar.url(:medium)
     else
       @success = false
       @message = user.errors.to_json#'Ocurrió un error al cambiar la foto. Favor de intentar nuevamente.'

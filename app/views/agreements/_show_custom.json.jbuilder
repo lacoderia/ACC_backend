@@ -1,3 +1,3 @@
 json.array!(@agreements) do |agreement|
-  json.extract! agreement, :id, :name, :logo, :mail_domain
+  json.extract! agreement, :id, :name, :mail_domain
 end

@@ -8,12 +8,11 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, :styles => { :medium => "200x200#", :thumb => "40x40#" }, :url => "/:class/:attachment/:id/:style.png", :default_url => "/:class/:attachment/default.png"
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png"]
-  #do_not_validate_attachment_file_type :avatar
-
 
 	has_many :my_rides, :foreign_key => :user_id, :class_name => 'Ride' 
 	has_and_belongs_to_many :rides
   has_and_belongs_to_many :vehicles
+  belongs_to :agreement
 
 	def ensure_authentication_token
     if authentication_token.blank?

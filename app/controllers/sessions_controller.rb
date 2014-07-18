@@ -37,7 +37,10 @@ class SessionsController < Devise::SessionsController
   end
 
   def logout
-    resource = User.find_for_database_authentication({:authentication_token => params[:auth_token]})
+    if (params[:auth_token])
+      resource = User.find_for_database_authentication({:authentication_token => params[:auth_token]})
+    end
+    resource = User.find(params[:user_id]) unless resource
     resource.authentication_token = nil
     resource.save
     sign_out resource

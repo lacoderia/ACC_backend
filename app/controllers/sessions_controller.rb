@@ -7,7 +7,7 @@ class SessionsController < Devise::SessionsController
 
     if params[:auth_token]
       user_token = params[:auth_token].presence
-      @resource = user_token && User.find_by_authentication_token(user_token.to_s)
+      @resource = user_token && User.find_by_id(params[:user_id])
       return invalid_token_attempt unless @resource
       if @resource && Devise.secure_compare(@resource.authentication_token, user_token)
         valid = true

@@ -1,5 +1,6 @@
 class AgreementsController < ApplicationController
   before_action :set_agreement, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :authenticate_user!, only: [:index]
 
   # GET /agreements
   # GET /agreements.json

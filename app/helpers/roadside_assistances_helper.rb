@@ -1,0 +1,2 @@
+module RoadsideAssistancesHelper
+end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions', :confirmations => 'confirmations', :passwords => 'passwords'}
 
   devise_scope :user do
@@ -23,7 +24,8 @@ Rails.application.routes.draw do
   end
 
   resources :agreements
-
+  resources :roadside_assistances
+  
   resources :users do
     member do
       get 'detail'

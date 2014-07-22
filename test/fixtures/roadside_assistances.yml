@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  phone_number: MyString
+  plate_number: MyString
+  assistance_type: MyString
+  lat: 1.5
+  long: 1.5
+  is_guest: false
+  user_id: 1
+
+two:
+  name: MyString
+  phone_number: MyString
+  plate_number: MyString
+  assistance_type: MyString
+  lat: 1.5
+  long: 1.5
+  is_guest: false
+  user_id: 1

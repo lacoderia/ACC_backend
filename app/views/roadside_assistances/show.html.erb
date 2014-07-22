@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @roadside_assistance.name %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @roadside_assistance.phone_number %>
+</p>
+
+<p>
+  <strong>Plate number:</strong>
+  <%= @roadside_assistance.plate_number %>
+</p>
+
+<p>
+  <strong>Assistance type:</strong>
+  <%= @roadside_assistance.assistance_type %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @roadside_assistance.lat %>
+</p>
+
+<p>
+  <strong>Long:</strong>
+  <%= @roadside_assistance.long %>
+</p>
+
+<p>
+  <strong>Is guest:</strong>
+  <%= @roadside_assistance.is_guest %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @roadside_assistance.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_roadside_assistance_path(@roadside_assistance) %> |
+<%= link_to 'Back', roadside_assistances_path %>

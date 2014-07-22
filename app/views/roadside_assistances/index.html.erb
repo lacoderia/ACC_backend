@@ -1,0 +1,39 @@
+<h1>Listing roadside_assistances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone number</th>
+      <th>Plate number</th>
+      <th>Assistance type</th>
+      <th>Lat</th>
+      <th>Long</th>
+      <th>Is guest</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @roadside_assistances.each do |roadside_assistance| %>
+      <tr>
+        <td><%= roadside_assistance.name %></td>
+        <td><%= roadside_assistance.phone_number %></td>
+        <td><%= roadside_assistance.plate_number %></td>
+        <td><%= roadside_assistance.assistance_type %></td>
+        <td><%= roadside_assistance.lat %></td>
+        <td><%= roadside_assistance.long %></td>
+        <td><%= roadside_assistance.is_guest %></td>
+        <td><%= roadside_assistance.user_id %></td>
+        <td><%= link_to 'Show', roadside_assistance %></td>
+        <td><%= link_to 'Edit', edit_roadside_assistance_path(roadside_assistance) %></td>
+        <td><%= link_to 'Destroy', roadside_assistance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Roadside assistance', new_roadside_assistance_path %>

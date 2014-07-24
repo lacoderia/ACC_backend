@@ -1,6 +1,7 @@
 class RoadsideAssistancesController < ApplicationController
   before_action :set_roadside_assistance, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, :only => [:create]
+  skip_before_filter :authenticate_user!, only: [:create]
 
   # GET /roadside_assistances
   # GET /roadside_assistances.json

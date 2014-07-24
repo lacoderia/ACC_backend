@@ -43,8 +43,8 @@ class SessionsController < Devise::SessionsController
     resource = User.find(params[:user_id]) unless resource
     resource.authentication_token = nil
     resource.save
-    sign_out resource
-    render :json => {:success => true}
+    result = sign_out resource
+    render :json => {:success => result}
   end
 
   protected

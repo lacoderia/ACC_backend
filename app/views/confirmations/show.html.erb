@@ -1,3 +1,9 @@
-<h2>Carpooling por Automóvil Club Colombia</h2>
-
-<%= label_tag 'message', @message %>
+<h2>Carpooling Automóvil Club de Colombia</h2>
+<% if @success %>
+	<p> ¡Bienvenido(a) a la comunidad de Carpooling Automóvil Club de Colombia! </p>
+	<p> Te queremos dar la bienvenida y esperamos que disfrutes de esta comunidad. </p>
+	<p> Muchas gracias, </p>
+	<p> Touring & Automóvil Club de Colombia </p>
+<% else %>
+	<%= label_tag 'message', @message %>
+<% end %>

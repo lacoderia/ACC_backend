@@ -1,5 +1,8 @@
-<p>¡Bienvenido al Automóvil Club de Colombia <%= @resource.first_name %>!</p>
+<p>Hola <%= @resource.first_name %>:</p>
 
-<p>Para activar tu cuenta solamente haz click en la liga que aparece a continuación:</p>
+<p>¡Bienvenido(a) a la comunidad de Carpooling Automóvil Club de Colombia!</p>
+<p> Para activar tu cuenta haz click en el siguiente enlace:</p>
 
-<p><%= link_to 'Activar mi cuenta', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to 'Activar registro', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>Touring & Automóvil Club de Colombia</p>

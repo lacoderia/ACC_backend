@@ -6,8 +6,10 @@ skip_before_filter :verify_authenticity_token, :only => [:create]
     yield resource if block_given?
 
     if resource.errors.empty?
+      @success = true
       @message = "¡Tu cuenta se activó exitosamente! Ya puedes iniciar sesión en la aplicación."
     else
+      @success = false
       @message = "Ocurrió un error y tu cuenta no pudo activarse. Intenta nuevamente más tarde."
     end
 	end

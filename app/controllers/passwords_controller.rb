@@ -7,7 +7,7 @@ class PasswordsController < Devise::PasswordsController
 
     if successfully_sent?(resource)
       @success = true
-      @message = "Te hemos enviado un correo electrónico con las instrucciones para cambiar tu contraseña."
+      @message = "Hemos enviado un correo electrónico a tu cuenta registrada. Haz clic en el enlace del correo electrónico para restablecer tu contraseña."
     else
       @success = false
       @message = 'La dirección de correo electrónico es incorrecta. Escribe la misma que usaste durante el registro.'
@@ -22,7 +22,7 @@ class PasswordsController < Devise::PasswordsController
       resource.unlock_access! if unlockable?(resource)
       flash_message = resource.active_for_authentication? ? :updated : :updated_not_active
       set_flash_message(:notice, flash_message) if is_flashing_format?
-      @message = "Tu contraseña ha sido cambiada. Ya puedes iniciar sesión en las aplicaciones de ACC."
+      @message = "Tu contraseña ha sido cambiada exitosamente"
       render "password_change"
     else
       respond_with resource

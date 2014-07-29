@@ -91,6 +91,7 @@ class RidesController < ApplicationController
         @ride.save
         @success = true
         @message = 'Tu lugar ha sido reservado.'
+        RideMailer.book_email(@ride.owner, user, @ride).deliver
       else
         @success = false
         @message = 'Ya tienes un lugar reservado.'

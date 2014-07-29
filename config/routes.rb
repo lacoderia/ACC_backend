@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get 'carpool/index'
 
   resources :vehicles
+  resources :agreements
+  resources :roadside_assistances
+  resources :locations
 
   resources :rides do
     member do
@@ -22,9 +25,6 @@ Rails.application.routes.draw do
       get 'available'
     end
   end
-
-  resources :agreements
-  resources :roadside_assistances
   
   resources :users do
     member do

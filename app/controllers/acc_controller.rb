@@ -5,8 +5,8 @@ class AccController < ApplicationController
   	@picoplaca = ''
   	if params[:ciudad]
   		ciudad = params[:ciudad].to_i
-  		day = Time.now.day
-  		wday = Time.now.wday
+  		day = Time.zone.now.day
+  		wday = Time.zone.now.wday
   		if (wday > 0 && wday < 6)
 	  		if ciudad == 1
 	  			@picoplaca = day % 2 != 0 ? '1-3-5-7-9' : '0-2-4-6-8'
@@ -48,7 +48,7 @@ class AccController < ApplicationController
 	  			when 4
 	  				case ciudad
 	  				when 2
-	  					@picoplaca = '7-8'	
+	  					@picoplaca = '7-8'
 	  				when 3
 	  					@picoplaca = '3-4'
 	  				when 4

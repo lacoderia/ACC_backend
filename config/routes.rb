@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :perks
-
   devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions', :confirmations => 'confirmations', :passwords => 'passwords'}
 
   devise_scope :user do
@@ -12,11 +10,13 @@ Rails.application.routes.draw do
   end
 
   get 'carpool/index'
+  get 'acc/pico_placa'
 
   resources :vehicles
   resources :agreements
   resources :roadside_assistances
   resources :locations
+  resources :perks
 
   resources :rides do
     member do

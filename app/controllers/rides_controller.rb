@@ -1,4 +1,5 @@
 class RidesController < ApplicationController
+	before_filter :authenticate_user!
   before_action :set_ride, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, :only => [:create, :book]
   

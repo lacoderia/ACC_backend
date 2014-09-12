@@ -1,4 +1,5 @@
 class PerksController < ApplicationController
+	before_filter :authenticate_user!
   before_action :set_perk, only: [:show, :edit, :update, :destroy]
   skip_before_filter :authenticate_user!, only: [:index]
 

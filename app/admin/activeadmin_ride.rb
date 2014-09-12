@@ -16,8 +16,8 @@ ActiveAdmin.register Ride do
 
 	form do |f|
 		f.inputs "Ride Details" do
-			f.input :agreement, :collection => Agreement.all, :as => :select
-			f.input :user, :collection => User.all, :as => :select
+			f.input :agreement_id, :collection => Agreement.all, :as => :select
+			f.input :user_id, :collection => User.all, :as => :select
 			f.input :ride_when
 			f.input :origin
 			f.input :destination

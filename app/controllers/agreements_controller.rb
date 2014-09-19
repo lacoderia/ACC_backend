@@ -6,10 +6,11 @@ class AgreementsController < ApplicationController
   # GET /agreements
   # GET /agreements.json
   def index
-    @agreements = Agreement.all
     if (params[:min] == "true")
+      @agreements = Agreement.where("active = ?", true)
       render :partial => 'show_custom', :content_type => 'application/json'
     end
+    @agreements = Agreement.all
   end
 
   # GET /agreements/1

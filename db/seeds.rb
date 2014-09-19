@@ -8,7 +8,7 @@
 
 if Rails.env == "production"
 	Agreement.create(agreement_no: 0, name: 'Automóvil Club Colombia', active: true, mail_domain: 'acc.com.co')
-	Agreement.create(agreement_no: 0, name: 'App Test', active: true, mail_domain: 'coderia.mx')
+	Agreement.create(agreement_no: 0, name: 'Coderia', active: true, mail_domain: 'coderia.mx')
 
 else
 

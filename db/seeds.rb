@@ -6,6 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+if Rails.env == "production"
+	Agreement.create(agreement_no: 0, name: 'Automóvil Club Colombia', active: true, mail_domain: 'acc.com.co')
+	Agreement.create(agreement_no: 0, name: 'App Test', active: true, mail_domain: 'coderia.mx')
+
+else
+
 #mercol = Agreement.create(agreement_no: 10, name: 'Automóvil Club Colombia', active: true, mail_domain: 'acc.com.co')
 #mercol = Agreement.create(agreement_no: 11, name: 'Coderia', active: true, mail_domain: 'hotmail.com')
 
@@ -28,9 +34,9 @@
 #Location.create(name: 'DACO TRADING', lat: 4.682466, long: -74.043250, location_type_id: 1, address: 'Calle 68 #27', description: 'En el Batericenter obtendrán revisión de baterías y plumillas')
 
 
-Perk.create(name: 'DIAGNOSTIYÁ', description: 'Reciba un 20% de descuento en la revisión técnico mecánica para su vehículo')
-Perk.create(name: 'TELLANTAS', description: 'Reciba descuentos en la compra de aceites, filtros, llantas, accesorios de lujo, mantenimiento preventivo y correctivo, baterías y revisión técnico mecánica')
-Perk.create(name: 'DACO TRADING', description: 'En el Batericenter obtendrán revisión de baterías y plumillas')
+#Perk.create(name: 'DIAGNOSTIYÁ', description: 'Reciba un 20% de descuento en la revisión técnico mecánica para su vehículo')
+#Perk.create(name: 'TELLANTAS', description: 'Reciba descuentos en la compra de aceites, filtros, llantas, accesorios de lujo, mantenimiento preventivo y correctivo, baterías y revisión técnico mecánica')
+#Perk.create(name: 'DACO TRADING', description: 'En el Batericenter obtendrán revisión de baterías y plumillas')
 #user1 = User.create(first_name: 'Miguel Angel', last_name: 'Blanco Corredor', document_type: 'CC', document_id: '88167911', is_member: false, agreement_id: mercol.id, password: '12345678', email: 'a@a.com')
 #user2 = User.create(first_name: 'Katerin', last_name: 'Florez Forero', document_type: 'CC', document_id: '52152064', is_member: false, agreement_id: mercol.id, password: '12345678', email: 'b@a.com')
 #user3 = User.create(first_name: 'Jairo', last_name: 'Varela Grecco', document_type: 'CC', document_id: '8672861', is_member: false, agreement_id: mercol.id, password: '12345678', email: 'c@a.com')
@@ -47,3 +53,4 @@ Perk.create(name: 'DACO TRADING', description: 'En el Batericenter obtendrán re
 #user2.rides << ride5
 #user3.rides << ride1
 #user3.rides << ride2
+end

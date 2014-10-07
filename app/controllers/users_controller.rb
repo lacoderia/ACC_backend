@@ -71,7 +71,7 @@ class UsersController < ApplicationController
   def change_avatar
     newFile = File.new("#{params[:id]}.png", 'wb')
     newFile.write(Base64.decode64(params[:user][:avatar]))
-
+    newFile.size
     user = User.find(params[:id])
     user.avatar = newFile
     if user.save
@@ -80,7 +80,7 @@ class UsersController < ApplicationController
       @avatar = user.avatar.url(:medium)
     else
       @success = false
-      @message = 'Ocurrió un error al cambiar la foto. Favor de intentar nuevamente.'
+      @message = 'Ocurrió un error al cambiar la foto. Favor intentar nuevamente.'
     end
     File.delete("#{params[:id]}.png")
   end

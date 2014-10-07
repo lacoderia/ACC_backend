@@ -26,7 +26,7 @@ class RegistrationsController < Devise::RegistrationsController
     rescue => e
       @success = false
       #@message = 'Ya existe un usuario registrado con esos datos de identificación.'
-      @message = e.message.index('document_type') ? 'Ya existe un usuario registrado con esos datos de identificación.' : 'Ocurrió un error durante el registro. Favor de intentar nuevamente.'
+      @message = e.message.index('document_type') ? 'Ya existe un usuario registrado con esos datos de identificación.' : 'Ocurrió un error durante el registro. Favor intentar nuevamente.'
       return
     end
     yield resource if block_given?

@@ -34,7 +34,7 @@ class RoadsideAssistancesController < ApplicationController
       @message = 'Hemos recibido tu solicitud. En unos minutos nos comunicaremos contigo vía telefónica.'
     else
       @success = false
-      @message = 'Ocurrió un error al recibir tu solicitud. Por favor intenta nuevamente.'
+      @message = 'Ocurrió un error al recibir tu solicitud. Favor intentar nuevamente.'
     end
   end
 

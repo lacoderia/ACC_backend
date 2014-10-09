@@ -34,7 +34,7 @@ class RegistrationsController < Devise::RegistrationsController
     if resource_saved
       @success = true
       @message = 'Tu registro se completó exitosamente. Te hemos enviado un correo electrónico con las instrucciones para activar tu cuenta.'
-      @message += ' El vehículo se asoció a tu cuenta pero fue registrado anteriormente por otro usuario.' unless is_new
+      @message += ' El vehículo se asoció a tu cuenta pero fue registrado anteriormente por otro usuario.' unless is_new == nil || is_new
     else
       @success = false
       if resource.errors[:password_confirmation].size > 0

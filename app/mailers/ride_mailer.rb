@@ -5,6 +5,6 @@ class RideMailer < ActionMailer::Base
   	@user = user
   	@passenger = passenger
   	@ride = ride
-  	mail(to: @user.email, subject: 'Cupo reservado comunidad Carpooling')
+  	mail(to: @user.email, subject: 'Cupo reservado comunidad Carro Compartido')
   end
 end

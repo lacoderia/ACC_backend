@@ -18,9 +18,9 @@ en:
       unconfirmed: "You have to confirm your account before continuing."
     mailer:
       confirmation_instructions:
-        subject: "Activar tu cuenta Carpooling Automóvil Club de Colombia"
+        subject: "Activar tu cuenta Carro Compartido Touring & Automóvil Club de Colombia"
       reset_password_instructions:
-        subject: "Restablece tu contraseña de Carpooling"
+        subject: "Restablece tu contraseña de Carro Compartido Touring & Automóvil Club de Colombia"
       unlock_instructions:
         subject: "Unlock Instructions"
     omniauth_callbacks:

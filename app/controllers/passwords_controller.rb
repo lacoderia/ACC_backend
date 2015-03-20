@@ -8,10 +8,10 @@ class PasswordsController < Devise::PasswordsController
 
     if successfully_sent?(resource)
       @success = true
-      @message = "Hemos enviado un correo electrónico a tu cuenta registrada. Haz clic en el enlace del correo electrónico para restablecer tu contraseña."
+      @message = "Te hemos enviado un correo, haz clic en el enlace para reestablecer tu contraseña. El email puede estar en la bandeja de spam."
     else
       @success = false
-      @message = 'La dirección de correo electrónico es incorrecta. Escribe la misma que usaste durante el registro.'
+      @message = 'La dirección de correo es incorrecta. Escribe la misma que usaste durante el registro.'
     end
 	end
 

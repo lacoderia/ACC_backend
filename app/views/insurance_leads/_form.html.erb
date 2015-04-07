@@ -1,0 +1,41 @@
+<%= form_for(@insurance_lead) do |f| %>
+  <% if @insurance_lead.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@insurance_lead.errors.count, "error") %> prohibited this insurance_lead from being saved:</h2>
+
+      <ul>
+      <% @insurance_lead.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name_f %><br>
+    <%= f.text_field :last_name_f %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name_m %><br>
+    <%= f.text_field :last_name_m %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number %><br>
+    <%= f.text_field :phone_number %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :insurance_type %><br>
+    <%= f.text_field :insurance_type %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

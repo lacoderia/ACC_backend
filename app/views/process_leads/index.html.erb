@@ -1,0 +1,35 @@
+<h1>Listing process_leads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name f</th>
+      <th>Last name m</th>
+      <th>Phone number</th>
+      <th>Email</th>
+      <th>Process type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @process_leads.each do |process_lead| %>
+      <tr>
+        <td><%= process_lead.first_name %></td>
+        <td><%= process_lead.last_name_f %></td>
+        <td><%= process_lead.last_name_m %></td>
+        <td><%= process_lead.phone_number %></td>
+        <td><%= process_lead.email %></td>
+        <td><%= process_lead.process_type %></td>
+        <td><%= link_to 'Show', process_lead %></td>
+        <td><%= link_to 'Edit', edit_process_lead_path(process_lead) %></td>
+        <td><%= link_to 'Destroy', process_lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Process lead', new_process_lead_path %>

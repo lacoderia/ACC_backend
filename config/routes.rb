@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :process_leads
+
+  resources :insurance_leads
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :leads

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @process_lead.first_name %>
+</p>
+
+<p>
+  <strong>Last name f:</strong>
+  <%= @process_lead.last_name_f %>
+</p>
+
+<p>
+  <strong>Last name m:</strong>
+  <%= @process_lead.last_name_m %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @process_lead.phone_number %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @process_lead.email %>
+</p>
+
+<p>
+  <strong>Process type:</strong>
+  <%= @process_lead.process_type %>
+</p>
+
+<%= link_to 'Edit', edit_process_lead_path(@process_lead) %> |
+<%= link_to 'Back', process_leads_path %>

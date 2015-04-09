@@ -73,7 +73,7 @@ class InsuranceLeadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def insurance_lead_params
-      params.require(:insurance_lead).permit(:first_name, :last_name_f, :last_name_m, :phone_number, :email, :insurance_type)
+      params.require(:insurance_lead).permit(:first_name, :last_name_f, :last_name_m, :phone_number, :email, :insurance_type, :other_type)
     end
 end
 

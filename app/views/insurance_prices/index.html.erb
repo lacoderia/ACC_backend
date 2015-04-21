@@ -1,0 +1,31 @@
+<h1>Listing insurance_prices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Vehicle type</th>
+      <th>Size</th>
+      <th>Age Old</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @insurance_prices.each do |insurance_price| %>
+      <tr>
+        <td><%= insurance_price.vehicle_type %></td>
+        <td><%= insurance_price.size %></td>
+        <td><%= insurance_price.age_old %></td>
+        <td><%= insurance_price.price %></td>
+        <td><%= link_to 'Show', insurance_price %></td>
+        <td><%= link_to 'Edit', edit_insurance_price_path(insurance_price) %></td>
+        <td><%= link_to 'Destroy', insurance_price, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Insurance price', new_insurance_price_path %>

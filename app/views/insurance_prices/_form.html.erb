@@ -1,0 +1,33 @@
+<%= form_for(@insurance_price) do |f| %>
+  <% if @insurance_price.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@insurance_price.errors.count, "error") %> prohibited this insurance_price from being saved:</h2>
+
+      <ul>
+      <% @insurance_price.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :vehicle_type %><br>
+    <%= f.text_field :vehicle_type %>
+  </div>
+  <div class="field">
+    <%= f.label :size %><br>
+    <%= f.text_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :age_old %><br>
+    <%= f.text_field :age_old %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

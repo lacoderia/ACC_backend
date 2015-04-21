@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Vehicle type:</strong>
+  <%= @insurance_price.vehicle_type %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @insurance_price.size %>
+</p>
+
+<p>
+  <strong>Age Old:</strong>
+  <%= @insurance_price.age_old %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @insurance_price.price %>
+</p>
+
+<%= link_to 'Edit', edit_insurance_price_path(@insurance_price) %> |
+<%= link_to 'Back', insurance_prices_path %>

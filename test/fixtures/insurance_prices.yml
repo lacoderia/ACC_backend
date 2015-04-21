@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vehicle_type: MyString
+  size: MyString
+  ageold: MyString
+  price: 1.5
+
+two:
+  vehicle_type: MyString
+  size: MyString
+  ageold: MyString
+  price: 1.5

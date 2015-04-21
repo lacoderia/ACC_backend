@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :insurance_prices do
+    collection do
+      get 'table'
+    end
+  end
+
   resources :process_leads
 
   resources :insurance_leads

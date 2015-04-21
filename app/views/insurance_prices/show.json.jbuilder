@@ -1,0 +1,1 @@
+json.extract! @insurance_price, :id, :vehicle_type, :size, :age_old, :price, :created_at, :updated_at

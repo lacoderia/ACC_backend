@@ -10,7 +10,7 @@ json.set! :vehicles_type do
    				ages = sizes[size].group_by(&:age_old)
    				json.array!(ages.keys) do |age_old|
    					json.name age_old.nil? ? "" : age_old
-   					json.cost ages[age_old][0].price
+   					json.cost ActionController::Base.helpers.number_to_currency(ages[age_old][0].price, precision:0)
    				end
    			end
     	end

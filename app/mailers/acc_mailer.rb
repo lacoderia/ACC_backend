@@ -19,4 +19,5 @@ class ACCMailer < ActionMailer::Base
   def roadside_assitance_mail(roadside_assitance)
   	@roadside_assitance = roadside_assitance
   	mail(to: "tramites@acc.com.co", subject: 'Nueva solicitud de grúa o desvare')
+  end
 end

@@ -1,8 +1,30 @@
 ActiveAdmin.register User, :as => "Usuario" do
 
-	actions :all, :except => [:new, :edit, :destroy]	
+  controller do
+    def update
+      if params[:user][:password].blank?
+        params[:user].delete("password")
+        params[:user].delete("password_confirmation")
+      end
+      if params[:user][:email].blank?
+        params[:user].delete("email")
+        params[:user].delete("email_confirmation")
+      end
+      super
+    end
+  end
 
-  # See permitted parameters documentation:
+  before_save do |user|
+    user.skip_confirmation!
+    user.skip_reconfirmation!
+  end
+
+	actions :all, :except => [:new, :destroy, :show]	
+
+  
+        permit_params :first_name, :last_name, :email, :document_id
+  
+        # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # permit_params :list, :of, :attributes, :on, :model
@@ -28,6 +50,19 @@ ActiveAdmin.register User, :as => "Usuario" do
   	end
 		actions :defaults => true
 	end
+
+        form do |f|
+
+          	f.inputs "Detalles de Usuario" do
+                        f.input :first_name, :label => "Nombre"
+                        f.input :last_name, :label => "Apellido"
+                        f.input :email
+                        f.input :document_id
+			# Will preview the image when the object is edited
+		end
+		f.actions
+
+        end
 
 	show do |user|
 		attributes_table do

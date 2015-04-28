@@ -1,6 +1,8 @@
 ActiveAdmin.register RoadsideAssistance, :as => "Gruas/Desvares" do
 
-	actions :all, :except => [:new, :edit, :destroy]
+  config.sort_order = 'created_at_desc'  
+
+  actions :all, :except => [:new, :show, :edit, :destroy]
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -23,10 +25,20 @@ ActiveAdmin.register RoadsideAssistance, :as => "Gruas/Desvares" do
 		column "Ubicación" do |roadside_assistance|
 			link_to "#{roadside_assistance.lat}, #{roadside_assistance.long}", "http://maps.google.com/?q=#{roadside_assistance.lat},#{roadside_assistance.long}", :target => "_blank"	
 		end
-		column "Es invitado", :is_guest
+		column "Es invitado", :is_guest do |ra|
+                  ra.is_guest? ? status_tag("sí", :ok) : status_tag("no")
+                end
 		column "Usuario" do |roadside_assistance|
 			link_to("#{roadside_assistance.user.first_name} #{roadside_assistance.user.last_name}", admin_usuario_url(roadside_assistance.user)) if roadside_assistance.user
 		end
+                column "Atendido", :solved do |ra|
+			if ra.solved
+				check_box_tag "ra_link_#{ra.id}", "active", true, :onclick => "roadsideAssistanceCheck(#{ra.id}, false)"
+			else
+				check_box_tag "ra_link_#{ra.id}", "active", false, :onclick => "roadsideAssistanceCheck(#{ra.id}, true)" 
+			end
+		end
+
 		actions :defaults => true
 	end
 
@@ -50,6 +62,9 @@ ActiveAdmin.register RoadsideAssistance, :as => "Gruas/Desvares" do
 			row "Es invitado" do
 				ra.is_guest
 			end
+                        row "Atendido" do
+                                ra.solved
+                        end
 			row "Usuario" do
 				link_to("#{ra.user.first_name} #{ra.user.last_name}", admin_usuario_url(ra.user)) if ra.user
 			end

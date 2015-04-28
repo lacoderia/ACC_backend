@@ -1,8 +1,8 @@
 class RoadsideAssistancesController < ApplicationController
-	before_filter :authenticate_user!
+  before_filter :authenticate_user!
   before_action :set_roadside_assistance, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, :only => [:create]
-  skip_before_filter :authenticate_user!, only: [:create]
+  skip_before_filter :authenticate_user!, only: [:create, :solved]
 
   # GET /roadside_assistances
   # GET /roadside_assistances.json
@@ -62,6 +62,17 @@ class RoadsideAssistancesController < ApplicationController
     end
   end
 
+  def solved
+    ra = RoadsideAssistance.find(params[:id])
+    if ra
+      ra.update_attribute(:solved, params[:solved])
+      render json: {:roadside_assitance => ra}
+      return
+    else
+      render plain: "Error", status: 401
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_roadside_assistance
@@ -70,6 +81,6 @@ class RoadsideAssistancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def roadside_assistance_params
-      params.require(:roadside_assistance).permit(:name, :phone_number, :plate_number, :assistance_type, :lat, :long, :is_guest, :user_id)
+      params.require(:roadside_assistance).permit(:name, :phone_number, :plate_number, :assistance_type, :lat, :long, :is_guest, :user_id, :solved)
     end
 end

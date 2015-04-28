@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :roadside_assistances do
+    member do
+      post 'solved'
+    end
+  end
+
   resources :insurance_prices do
     collection do
       get 'table'
@@ -28,7 +34,6 @@ Rails.application.routes.draw do
 
   resources :vehicles
   resources :agreements
-  resources :roadside_assistances
   resources :locations
   resources :perks
 

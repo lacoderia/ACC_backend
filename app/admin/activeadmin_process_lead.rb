@@ -1,5 +1,6 @@
 ActiveAdmin.register ProcessLead, :as => "Solicitudes_de Tramite" do
 
+  config.filters = false
   config.sort_order = 'created_at_desc'  
 	
   actions :all, :except => [:new, :edit, :destroy, :show]	
@@ -14,14 +15,5 @@ ActiveAdmin.register ProcessLead, :as => "Solicitudes_de Tramite" do
     column "Correo", :email
     column "Fecha", :created_at 
   end
-  
-  filter :first_name
-  filter :last_name_f
-  filter :last_name_m
-  filter :process_type
-  filter :other_type
-  filter :phone_number
-  filter :email
-  filter :created_at
-  
+
 end

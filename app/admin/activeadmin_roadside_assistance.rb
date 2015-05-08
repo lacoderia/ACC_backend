@@ -16,6 +16,9 @@ ActiveAdmin.register RoadsideAssistance, :as => "Gruas/Desvares" do
   #   permitted << :other if resource.something?
   #   permitted
   # end
+  action_item only: :index do
+    div "<meta http-equiv='refresh' content='60' >".html_safe
+  end
 
 	index :title => "Grúas/Desvares" do
 		column "Nombre", :name

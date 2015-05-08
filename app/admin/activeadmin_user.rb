@@ -22,7 +22,7 @@ ActiveAdmin.register User, :as => "Usuario" do
 	actions :all, :except => [:new, :destroy, :show]	
 
   
-        permit_params :first_name, :last_name, :email, :document_id
+        permit_params :first_name, :last_name, :email, :document_id, :active
   
         # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -45,9 +45,17 @@ ActiveAdmin.register User, :as => "Usuario" do
 		column "Email", :email
 		column "Teléfono", :phone_number
 		column "Es afiliado", :is_member
+                column "Activo", :active do |user|
+                  if user.active
+		    check_box_tag "user_link_#{user.id}", "active", true, :onclick => "activeUserCheck(#{user.id}, false)"
+		  else
+		    check_box_tag "user_link_#{user.id}", "active", false, :onclick => "activeUserCheck(#{user.id}, true)" 
+		  end
+                end
+
 		column "Vehículos", :vehicles do |user|
-	   user.vehicles.map { |vehicle| vehicle.plate_number }.join("<br/>").html_safe
-  	end
+                  user.vehicles.map { |vehicle| vehicle.plate_number }.join("<br/>").html_safe
+                end
 		actions :defaults => true
 	end
 
@@ -58,6 +66,7 @@ ActiveAdmin.register User, :as => "Usuario" do
                         f.input :last_name, :label => "Apellido"
                         f.input :email
                         f.input :document_id
+                        f.input :active
 			# Will preview the image when the object is edited
 		end
 		f.actions

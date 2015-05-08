@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-	before_filter :authenticate_user!
+  before_filter :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, :only => [:add_vehicle, :remove_vehicle, :change_avatar]
+  skip_before_filter :authenticate_user!, only: [:active]
 
   # GET /users
   # GET /users.json
@@ -123,6 +124,17 @@ class UsersController < ApplicationController
     end
     @success = true
     @message = 'El vehículo ya no está asociado a tu cuenta.'
+  end
+
+  def active
+    user = User.find(params[:id])
+    if user
+      user.update_attribute(:active, params[:active])
+      render json: {:active => user}
+      return
+    else
+      render plain: "Error", status: 401
+    end
   end
 
   private

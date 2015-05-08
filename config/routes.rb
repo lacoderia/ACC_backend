@@ -53,6 +53,7 @@ Rails.application.routes.draw do
       post 'add_vehicle'
       post 'remove_vehicle'
       post 'change_avatar'
+      post 'active'
     end
   end
 

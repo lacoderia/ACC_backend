@@ -9,3 +9,11 @@
 		success: (data, textStatus, jqXHR) ->
 			$("#ra_link_#{ra_id}").attr('onclick', "roadsideAssistanceCheck(#{ra_id}, #{!solved})")
 
+@activeUserCheck = (user_id, active) ->
+	$.ajax "/users/#{user_id}/active?active=#{active}",
+		type: 'POST'
+		dataType: 'html'
+		error: (jqXHR, textStatus, errorThrown) ->
+			alert('Error. Intenta de nuevo.')
+		success: (data, textStatus, jqXHR) ->
+			$("#user_link_#{user_id}").attr('onclick', "activeUserCheck(#{user_id}, #{!active})")

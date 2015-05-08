@@ -36,20 +36,20 @@ ActiveAdmin.register Perk, :as => "Descuentos" do
   end
 
   show do |perk|
-          attributes_table do
-                  row "Nombre " do
-                          perk.name
-                  end
-                  row "Descripción" do
-                          perk.description
-                  end
-                  row "Activo" do
-                          perk.active
-                  end
-                  row "Logo", :class => "photo_medium" do
-                          link_to( (image_tag perk.logo.url(:medium)), perk.logo.url(:original), :target=>"_blank" )
-                  end
-          end
+    attributes_table do
+      row "Nombre " do
+              perk.name
+      end
+      row "Descripción" do
+              perk.description
+      end
+      row "Activo" do
+              perk.active
+      end
+      row "Logo", :class => "photo_medium" do
+              link_to( (image_tag perk.logo.url(:medium)), perk.logo.url(:original), :target=>"_blank" )
+      end
+    end
   end
 
 end

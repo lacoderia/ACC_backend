@@ -33,9 +33,24 @@ Rails.application.routes.draw do
   get 'acc/pico_placa'
 
   resources :vehicles
-  resources :agreements
-  resources :locations
-  resources :perks
+
+  resources :agreements do
+    member do
+      post 'active'
+    end
+  end
+
+  resources :locations do
+    member do
+      post 'active'
+    end
+  end
+
+  resources :perks do
+    member do
+      post 'active'
+    end
+  end
 
   resources :rides do
     member do

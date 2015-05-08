@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
 	before_filter :authenticate_user!
   before_action :set_location, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :authenticate_user!, only: [:index]
+  skip_before_filter :authenticate_user!, only: [:index, :active]
 
   # GET /locations
   # GET /locations.json
@@ -66,6 +66,18 @@ class LocationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def active
+    location = Location.find(params[:id])
+    if location
+      location.update_attribute(:active, params[:active])
+      render json: {:active => location}
+      return
+    else
+      render plain: "Error", status: 401
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

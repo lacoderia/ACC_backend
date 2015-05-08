@@ -1,7 +1,7 @@
 class AgreementsController < ApplicationController
-	before_filter :authenticate_user!
+  before_filter :authenticate_user!
   before_action :set_agreement, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :authenticate_user!, only: [:index]
+  skip_before_filter :authenticate_user!, only: [:index, :active]
 
   # GET /agreements
   # GET /agreements.json
@@ -64,6 +64,17 @@ class AgreementsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to agreements_url, notice: 'Agreement was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def active
+    agreement = Agreement.find(params[:id])
+    if agreement
+      agreement.update_attribute(:active, params[:active])
+      render json: {:active => agreement}
+      return
+    else
+      render plain: "Error", status: 401
     end
   end
 

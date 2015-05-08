@@ -10,13 +10,14 @@
 // Active Admin's got SASS!
 @import "active_admin/mixins";
 @import "active_admin/base";
+//@import "tooltip";
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
 
-.photo_thumb {
+/*.photo_thumb {
 }
 
 .photo_thumb img{
@@ -28,4 +29,12 @@
 
 .photo_medium img{
 	height: 240px;
+}
+
+.tooltip_wrapper {
+  position: relative;
+}*/
+
+.photo_alignment {
+	vertical-align: middle !important;	
 }

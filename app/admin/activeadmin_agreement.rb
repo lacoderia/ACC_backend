@@ -5,10 +5,18 @@ ActiveAdmin.register Agreement, :as => "Convenios" do
 	permit_params :agreement_no, :name, :mail_domain, :active, :logo
 
 	index :title => "Convenio" do
+		#column '<div style="display: inline-block; vertical-align: top;">No. de Convenio</div><div style="display: inline-block; vertical-align: top;" class="tooltip_wrapper"><img src="/assets/info.png" /><div class="helper_tooltip"><div class="tooltip_triangle" style="margin-left: 43.5px;"></div>Tooltip text here</div></div>'.html_safe, :agreement_no	
 		column "No. Convenio", :agreement_no	
 		column "Nombre", :name
 		column "Dominio Email", :mail_domain
-		column "Activo", :active
+		column "Activo", :active do |agreement|
+                  if agreement.active
+                    check_box_tag "agreement_link_#{agreement.id}", "active", true, :onclick => "activeAgreementCheck(#{agreement.id}, false)"
+                  else
+                    check_box_tag "agreement_link_#{agreement.id}", "active", false, :onclick => "activeAgreementCheck(#{agreement.id}, true)"
+                  end
+                end
+
 		column "Logo", :logo, :class => "photo_thumb" do |agreement|
 			link_to( (image_tag agreement.logo.url(:thumb)), agreement.logo.url(:original), :target=>"_blank" )
 		end

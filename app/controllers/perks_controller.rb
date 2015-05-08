@@ -1,7 +1,7 @@
 class PerksController < ApplicationController
-	before_filter :authenticate_user!
+  before_filter :authenticate_user!
   before_action :set_perk, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :authenticate_user!, only: [:index]
+  skip_before_filter :authenticate_user!, only: [:index, :active]
 
   # GET /perks
   # GET /perks.json
@@ -63,6 +63,17 @@ class PerksController < ApplicationController
     end
   end
 
+  def active
+    perk = Perk.find(params[:id])
+    if perk
+      perk.update_attribute(:active, params[:active])
+      render json: {:active => perk}
+      return
+    else
+      render plain: "Error", status: 401
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_perk
@@ -71,6 +82,6 @@ class PerksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def perk_params
-      params.require(:perk).permit(:name, :description, :location_id)
+      params.require(:perk).permit(:name, :description, :location_id, :logo)
     end
 end

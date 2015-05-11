@@ -31,6 +31,10 @@ ActiveAdmin.register Location, :as => "Gasolineras" do
   end
 
   form do |f|
+
+    f.form_buffers.last << "<script src='//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry' type='text/javascript'></script>
+<script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script><script src='/assets/active_admin_maps.js' type='text/javascript'></script>".html_safe
+ 
     f.inputs "Detalles de Gasolineras" do
       f.input :name, :label => "Nombre"
       f.input :address, :label => "Dirección"
@@ -38,7 +42,14 @@ ActiveAdmin.register Location, :as => "Gasolineras" do
       f.input :active, :label => "Activo"
       f.input :location_type_id, :as => :hidden, :value => 2
       f.input :logo, :required => false, :as => :file
+      f.input :lat, :input_html => { :readonly => true, :style => "background-color: #d3d3d3;" }
+      f.input :long, :input_html => { :readonly => true, :style => "background-color: #d3d3d3;" }
     end
+    
+     f.form_buffers.last << "<div style='width: 800px;'>
+  <div id='map' style='width: 800px; height: 400px;' data-lat='#{f.object.lat}' data-long='#{f.object.long}' ></div>
+</div>".html_safe
+
     f.actions
   end
   

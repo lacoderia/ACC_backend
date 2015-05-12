@@ -33,7 +33,7 @@ ActiveAdmin.register Location, :as => "Gasolineras" do
   form do |f|
 
     f.form_buffers.last << "<script src='//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry' type='text/javascript'></script>
-<script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script><script src='/assets/active_admin_maps.js' type='text/javascript'></script>".html_safe
+<script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>".html_safe
  
     f.inputs "Detalles de Gasolineras" do
       f.input :name, :label => "Nombre"

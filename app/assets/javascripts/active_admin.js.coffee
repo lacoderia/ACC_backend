@@ -1,4 +1,5 @@
 #= require active_admin/base
+//= require maps/active_admin_maps
 
 @roadsideAssistanceCheck = (ra_id, solved) ->
 	$.ajax "/roadside_assistances/#{ra_id}/solved?solved=#{solved}",

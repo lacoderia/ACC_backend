@@ -30,10 +30,14 @@ class SessionsController < Devise::SessionsController
     end 
     
     if valid
-      sign_in @resource, store: true
-      @success = true
-      @message = "Has iniciado sesión."
-      render "login.json"
+      if @resource.active
+        sign_in @resource, store: true
+        @success = true
+        @message = "Has iniciado sesión."
+        render "login.json"
+      else
+        inactive_user
+      end
     end
   end
 
@@ -65,6 +69,12 @@ class SessionsController < Devise::SessionsController
   def unconfirmed_login_attempt
     @success = false
     @message = "Necesitas activar tu cuenta primero desde el correo que recibiste al registrarte."
+    render "login.json"
+  end
+
+  def inactive_user
+    @success = false
+    @message = "Tu cuenta esta inactiva, comunícate con Automóvil Club de Colombia a la brevedad."
     render "login.json"
   end
 

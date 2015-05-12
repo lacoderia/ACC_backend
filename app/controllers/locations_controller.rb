@@ -7,7 +7,7 @@ class LocationsController < ApplicationController
   # GET /locations.json
   def index
     if (params[:type_id])
-      @locations = Location.where('location_type_id = ?', params[:type_id]).includes(:location_type)
+      @locations = Location.where('location_type_id = ? and active = ?', params[:type_id], true).includes(:location_type)
     else
       @locations = Location.all.includes(:location_type)
     end

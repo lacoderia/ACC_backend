@@ -6,7 +6,7 @@ class PerksController < ApplicationController
   # GET /perks
   # GET /perks.json
   def index
-    @perks = Perk.all.order(name: :asc)
+    @perks = Perk.where("active = ?", true).order(name: :asc)
   end
 
   # GET /perks/1

@@ -74,7 +74,7 @@ class SessionsController < Devise::SessionsController
 
   def inactive_user
     @success = false
-    @message = "Tu cuenta esta inactiva, comunícate con Automóvil Club de Colombia a la brevedad."
+    @message = "Tu cuenta está inactiva, comunícate con Automóvil Club de Colombia a la brevedad."
     render "login.json"
   end
 

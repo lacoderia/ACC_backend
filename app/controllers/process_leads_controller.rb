@@ -35,7 +35,7 @@ class ProcessLeadsController < ApplicationController
       #format.json { render :show, status: :created, location: @process_lead }
     else
       @success = false
-      @message = "Ocurrió un error con tu solicitud de trámite. Intenta nuevamente."
+      @message = "Ocurrió un error con tu solicitud de trámite. Favor intentar nuevamente."
       #format.html { render :new }
       #format.json { render json: @process_lead.errors, status: :unprocessable_entity }
     end

@@ -35,7 +35,7 @@ class LeadsController < ApplicationController
       #format.json { render :show, status: :created, location: @lead }
     else
       @success = false
-      @message = "Ocurrió un error con tu solicitud de registro. Intenta nuevamente."
+      @message = "Ocurrió un error con tu solicitud de registro. Favor intentar nuevamente."
       #format.html { render :new }
       #format.json { render json: @lead.errors, status: :unprocessable_entity }
     end

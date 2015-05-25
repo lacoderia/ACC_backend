@@ -31,10 +31,10 @@ class RoadsideAssistancesController < ApplicationController
 
     if @roadside_assistance.save
       @success = true
-      @message = 'Hemos recibido tu solicitud. En unos minutos nos comunicaremos contigo vía telefónica.'
+      @message = 'Hemos recibido tu solicitud. En breve nos pondremos en contacto contigo.'
     else
       @success = false
-      @message = 'Ocurrió un error al recibir tu solicitud. Favor intentar nuevamente.'
+      @message = 'Ocurrió un error con tu solicitud. Favor intentar nuevamente.'
     end
   end
 

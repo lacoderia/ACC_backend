@@ -30,12 +30,12 @@ class InsuranceLeadsController < ApplicationController
     @insurance_lead = InsuranceLead.new(insurance_lead_params)
     if @insurance_lead.save
       @success = true
-      @message = "Hemos recibido tu solicitud de contratación de seguro. En breve nos pondremos en contacto contigo."
+      @message = 'Hemos recibido tu solicitud de seguros. En breve nos pondremos en contacto contigo.'
       #format.html { redirect_to @insurance_lead, notice: 'InsuranceLead was successfully created.' }
       #format.json { render :show, status: :created, location: @insurance_lead }
     else
       @success = false
-      @message = "Ocurrió un error con tu solicitud de contratación de seguro. Intenta nuevamente."
+      @message = "Ocurrió un error con tu solicitud de seguros. Favor intentar nuevamente."
       #format.html { render :new }
       #format.json { render json: @insurance_lead.errors, status: :unprocessable_entity }
     end

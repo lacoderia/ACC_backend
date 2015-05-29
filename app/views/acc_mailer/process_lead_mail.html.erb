@@ -1,0 +1,9 @@
+<p>Hola,</p>
+
+<p>Se ha recibido una solicitud de <%= @process_lead.other_type != '' ? @process_lead.other_type : @process_lead.process_type %> por medio de la aplicación movil de ACC, con la siguiente información:</p>
+<p>Solicitante: <%= @process_lead.first_name + ' ' + @process_lead.last_name_f + ' ' + @process_lead.last_name_m%></p>
+<p>Email: <%= @process_lead.email%></p>
+<p>Teléfono: <%= @process_lead.phone_number%></p>
+<br/>
+<p>Hacer el registro correspondiente por medio de ticket y su gestión</p>
+<p> Aplicativo móvil ACC </p>

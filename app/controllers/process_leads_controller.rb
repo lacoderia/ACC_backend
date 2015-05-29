@@ -29,6 +29,7 @@ class ProcessLeadsController < ApplicationController
   def create
     @process_lead = ProcessLead.new(process_lead_params)
     if @process_lead.save
+      ACCMailer.process_lead_mail(@process_lead).deliver
       @success = true
       @message = "Hemos recibido tu solicitud de trámite. En breve nos pondremos en contacto contigo."
       #format.html { redirect_to @process_lead, notice: 'ProcessLead was successfully created.' }

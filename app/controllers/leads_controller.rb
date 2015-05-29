@@ -29,6 +29,7 @@ class LeadsController < ApplicationController
   def create
     @lead = Lead.new(lead_params)
     if @lead.save
+      ACCMailer.lead_mail(@lead).deliver
       @success = true
       @message = "Hemos recibido tu solicitud de registro. En breve nos pondremos en contacto contigo."
       #format.html { redirect_to @lead, notice: 'Lead was successfully created.' }

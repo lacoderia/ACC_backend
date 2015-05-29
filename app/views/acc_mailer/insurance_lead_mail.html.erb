@@ -1,0 +1,9 @@
+<p>Hola,</p>
+
+<p>Se ha recibido una solicitud de <%= @insurance_lead.other_type != '' ? @insurance_lead.other_type : @insurance_lead.insurance_type %> por medio de la aplicación movil de ACC, con la siguiente información:</p>
+<p>Solicitante: <%= @insurance_lead.first_name + ' ' + @insurance_lead.last_name_f + ' ' + @insurance_lead.last_name_m%></p>
+<p>Email: <%= @insurance_lead.email%></p>
+<p>Teléfono: <%= @insurance_lead.phone_number%></p>
+<br/>
+<p>Hacer el registro correspondiente por medio de ticket y su gestión</p>
+<p> Aplicativo móvil ACC </p>

@@ -29,6 +29,7 @@ class InsuranceLeadsController < ApplicationController
   def create
     @insurance_lead = InsuranceLead.new(insurance_lead_params)
     if @insurance_lead.save
+      ACCMailer.insurance_lead_mail(@insurance_lead).deliver
       @success = true
       @message = 'Hemos recibido tu solicitud de seguros. En breve nos pondremos en contacto contigo.'
       #format.html { redirect_to @insurance_lead, notice: 'InsuranceLead was successfully created.' }

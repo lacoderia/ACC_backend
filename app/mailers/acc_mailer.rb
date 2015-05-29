@@ -3,20 +3,17 @@ class ACCMailer < ActionMailer::Base
 
   def lead_mail(lead)
   	@lead = lead
-  	#mail(to: "afiliaciones@acc.com.co", subject: 'Nueva solicitud de afiliación')
-    mail(to: "diego@coderia.mx", subject: 'Nueva solicitud de afiliación')
+  	mail(to: "afiliaciones@acc.com.co", subject: 'Nueva solicitud de afiliación')
   end
 
   def insurance_lead_mail(insurance_lead)
   	@insurance_lead = insurance_lead
-  	#mail(to: "seguros@acc.com.co", subject: 'Nueva solicitud de seguros')
-    mail(to: "diego@coderia.mx", subject: 'Nueva solicitud de seguros')
+  	mail(to: "seguros@acc.com.co", subject: 'Nueva solicitud de seguros')
   end
 
   def process_lead_mail(process_lead)
   	@process_lead = process_lead
-  	#mail(to: "tramites@acc.com.co", subject: 'Nueva solicitud de trámite')
-    mail(to: "diego@coderia.mx", subject: 'Nueva solicitud de trámite')
+  	mail(to: "tramites@acc.com.co", subject: 'Nueva solicitud de trámite')
   end
 
   #def roadside_assitance_mail(roadside_assitance)

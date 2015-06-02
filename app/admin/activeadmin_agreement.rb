@@ -1,5 +1,5 @@
 ActiveAdmin.register Agreement, :as => "Convenios" do
-
+   
 	actions :all, :except => [:destroy]
 
 	permit_params :agreement_no, :name, :mail_domain, :active, :logo

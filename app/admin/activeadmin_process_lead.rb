@@ -1,6 +1,6 @@
 ActiveAdmin.register ProcessLead, :as => "Solicitudes_de Tramite" do
 
-  menu parent: 'Solicitudes', priority: 1
+  menu parent: 'ACC'
 
   config.filters = false
   config.sort_order = 'created_at_desc'  

@@ -1,5 +1,7 @@
 ActiveAdmin.register Location, :as => "Gasolineras" do
 
+  menu parent: 'ACC'
+  
   config.filters = false
   config.sort_order = 'id_asc'  
   

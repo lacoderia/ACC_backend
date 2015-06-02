@@ -1,6 +1,6 @@
 ActiveAdmin.register InsuranceLead, :as => "Solicitudes_de Seguro" do
 
-  menu parent: 'Solicitudes', priority: 2
+  menu parent: 'ACC'
 
   config.filters = false
   config.sort_order = 'created_at_desc'  

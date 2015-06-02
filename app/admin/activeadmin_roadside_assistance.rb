@@ -1,5 +1,7 @@
 ActiveAdmin.register RoadsideAssistance, :as => "Gruas/Desvares" do
 
+  menu parent: 'ACC'
+  
   config.sort_order = 'created_at_desc'  
 
   actions :all, :except => [:new, :show, :edit, :destroy]

@@ -1,4 +1,6 @@
 ActiveAdmin.register Agreement, :as => "Convenios" do
+  
+  menu parent: 'Carro Compartido'
    
 	actions :all, :except => [:destroy]
 

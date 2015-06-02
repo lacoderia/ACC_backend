@@ -20,6 +20,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  formtastic:
+    yes: 'Sí'
+    no: 'No'
+    create: 'Crear'
+    update: 'Editar'
+    submit: 'Enviar'
+    cancel: 'Cancelar'
+    reset: 'Limpiar'
+    required: 'requerido'
   active_admin:
     dashboard: Dashboard
     dashboard_welcome:
@@ -30,7 +39,9 @@ en:
     delete: "Eliminar"
     delete_confirmation: "Estás seguro que quieres borrar este elemento?"
     new_model: "Nuevos %{model}"
+    create_model: "Crear"
     edit_model: "Edita %{model}"
+    update_model: "Editar"
     delete_model: "Elimina %{model}"
     details: "%{model} Detalles"
     cancel: "Cancelar"
@@ -60,7 +71,7 @@ en:
       "yes": "Sí"
       "no": "No"
     main_content: "Por favor implementa %{model}#main_content para desplegar contenido."
-    logout: "Logout"
+    logout: "Cerrar Sesión"
     powered_by: "Powered by %{active_admin} %{version}"
     sidebars:
       filters: "Filtros"
@@ -115,37 +126,37 @@ en:
       password:
         title: "Password"
       sign_up:
-        title: "Sign up"
-        submit: "Sign up"
+        title: "Registro"
+        submit: "Regístrar"
       login:
         title: "Login"
-        remember_me: "Remember me"
+        remember_me: "Recordar"
         submit: "Login"
       reset_password:
-        title: "Forgot your password?"
-        submit: "Reset My Password"
+        title: "Olvidaste tu contraseña?"
+        submit: "Reiniciar password"
       change_password:
-        title: "Change your password"
-        submit: "Change my password"
+        title: "Cambio de password"
+        submit: "Cambiar"
       unlock:
-        title: "Resend unlock instructions"
-        submit: "Resend unlock instructions"
+        title: "Mandar instrucciones de desbloqueo"
+        submit: "Mandar"
       resend_confirmation_instructions:
-        title: "Resend confirmation instructions"
-        submit: "Resend confirmation instructions"
+        title: "Mandar instrucciones de confirmación"
+        submit: "Mandar"
       links:
-        sign_up: "Sign up"
-        sign_in: "Sign in"
-        forgot_your_password: "Forgot your password?"
+        sign_up: "Registro"
+        sign_in: "Login"
+        forgot_your_password: "Olvidaste tu contraseña?"
         sign_in_with_omniauth_provider: "Sign in with %{provider}"
-        resend_unlock_instructions: "Re-send unlock instructions"
-        resend_confirmation_instructions: "Re-send confirmation instructions"
+        resend_unlock_instructions: "Mandar instrucciones de desbloqueo"
+        resend_confirmation_instructions: "Mandar instrucciones de confirmación"
     unsupported_browser:
       headline: "Please note that ActiveAdmin no longer supports Internet Explorer versions 8 or less."
       recommendation: "We recommend upgrading to the latest <a href=\"http://windows.microsoft.com/ie\">Internet Explorer</a>, <a href=\"https://chrome.google.com/\">Google Chrome</a>, or <a href=\"https://mozilla.org/firefox/\">Firefox</a>."
       turn_off_compatibility_view: "If you are using IE 9 or later, make sure you <a href=\"http://windows.microsoft.com/en-US/windows7/webpages-look-incorrect-in-Internet-Explorer\">turn off \"Compatibility View\"</a>."
     access_denied:
-      message: "You are not authorized to perform this action."
+      message: "No estás autorizado para realizar esta acción"
     index_list:
       table: "Table"
       block: "List"

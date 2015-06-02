@@ -1,6 +1,6 @@
 ActiveAdmin.register Lead, :as => "Solicitudes_de Registro" do
   
-  menu parent: 'Solicitudes', priority: 3
+  menu parent: 'ACC'
 
   actions :all, :except => [:new, :edit, :destroy]
 

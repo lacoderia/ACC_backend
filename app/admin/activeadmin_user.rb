@@ -1,5 +1,5 @@
 ActiveAdmin.register User, :as => "Usuario" do
-
+  
   controller do
     def update
       if params[:user][:password].blank?

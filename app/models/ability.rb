@@ -28,20 +28,6 @@ class Ability
       
       user = User.new # guest user
       
-      #usuario loggeado
-      ## TODO revisar que lleva permisos realmente de manage
-      can :pico_placa, :acc_controller
-      can :manage, Agreement 
-      can :manage, :carpool_controller
-      can :manage, :confirmations_controller
-      can :manage, InsuranceLead
-      can :manage, InsurancePrice
-      can :create, Lead
-      can :manage, Location
-      can :manage, :passwords_controller
-      can :manage, Perk
-      can :read, ActiveAdmin::Page, :name => "Dashboard"
-      
       # Cualquiera no loggeado
       can :pico_placa, :acc_controller
       can [:index, :active], Agreement 

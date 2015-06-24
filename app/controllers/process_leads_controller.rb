@@ -1,7 +1,8 @@
 class ProcessLeadsController < ApplicationController
-	before_filter :authenticate_user!
+  authorize_resource
+  #before_filter :authenticate_user!
   before_action :set_process_lead, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :authenticate_user!, only: [:create]
+  #skip_before_filter :authenticate_user!, only: [:create]
   skip_before_filter :verify_authenticity_token, :only => [:create]
 
   # GET /process_leads

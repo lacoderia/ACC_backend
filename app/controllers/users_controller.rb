@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+  authorize_resource
+  #before_filter :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, :only => [:add_vehicle, :remove_vehicle, :change_avatar]
-  skip_before_filter :authenticate_user!, only: [:active]
+  #skip_before_filter :authenticate_user!, only: [:active]
 
   # GET /users
   # GET /users.json

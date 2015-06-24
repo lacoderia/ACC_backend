@@ -18,6 +18,8 @@ gem "paperclip", "~> 4.2"
 gem 'activeadmin', github: 'gregbell/active_admin' 
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem 'cancancan', '~> 1.10'
+gem 'pry-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

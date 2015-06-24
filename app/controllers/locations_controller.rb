@@ -1,7 +1,8 @@
 class LocationsController < ApplicationController
-  before_filter :authenticate_user!
+  authorize_resource
+  #before_filter :authenticate_user!
   before_action :set_location, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :authenticate_user!, only: [:index, :active]
+  #skip_before_filter :authenticate_user!, only: [:index, :active]
 
   # GET /locations
   # GET /locations.json

@@ -1,9 +1,10 @@
 class PasswordsController < Devise::PasswordsController
-	before_filter :authenticate_user!
-	skip_before_filter :verify_authenticity_token, :only => [:create]
+  authorize_resource
+  #before_filter :authenticate_user!
+  #skip_before_filter :verify_authenticity_token, :only => [:create]
 	
-	def create
-		self.resource = resource_class.send_reset_password_instructions(resource_params)
+  def create
+    self.resource = resource_class.send_reset_password_instructions(resource_params)
     yield resource if block_given?
 
     if successfully_sent?(resource)

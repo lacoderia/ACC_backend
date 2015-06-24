@@ -1,7 +1,8 @@
 class SessionsController < Devise::SessionsController
-	before_filter :authenticate_user!
-	skip_before_filter :verify_authenticity_token, :only => [:login, :logout]
-	before_filter :authenticate_user!, :except => [:create, :destroy]
+  authorize_resource
+  #before_filter :authenticate_user!
+  skip_before_filter :verify_authenticity_token, :only => [:login, :logout]
+  before_filter :authenticate_user!, :except => [:create, :destroy]
   respond_to :json
 
   def login

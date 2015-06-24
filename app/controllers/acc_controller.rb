@@ -1,6 +1,7 @@
 class AccController < ApplicationController
-	before_filter :authenticate_user!
-  skip_before_filter :authenticate_user!, only: [:pico_placa]
+  authorize_resource
+  #before_filter :authenticate_user!
+  #skip_before_filter :authenticate_user!, only: [:pico_placa]
 
   def pico_placa
   	@picoplaca = ''

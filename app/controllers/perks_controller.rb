@@ -1,7 +1,8 @@
 class PerksController < ApplicationController
-  before_filter :authenticate_user!
+  authorize_resource
+  #before_filter :authenticate_user!
   before_action :set_perk, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :authenticate_user!, only: [:index, :active]
+  #skip_before_filter :authenticate_user!, only: [:index, :active]
 
   # GET /perks
   # GET /perks.json

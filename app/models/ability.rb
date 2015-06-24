@@ -30,18 +30,18 @@ class Ability
       
       # Cualquiera no loggeado
       can :pico_placa, :acc_controller
-      can [:index, :active], Agreement 
+      can [:index, :active], Agreement #quitar el de active, es público para admins 
       can :create, InsuranceLead
-      can :manage, InsurancePrice #revisar
-      can :create, Lead      
-      can  [:index, :active], Location
-      can :create, :passwords_controller
-      can [:index, :active], Perk
+      can :manage, InsurancePrice #sólo lectura
+      can :create, Lead
+      can  [:index, :active], Location #quitar el de active, es público para admins
+      can :create, :passwords_controller #agregar update, es público para admins
+      can [:index, :active], Perk #quitar active
       can :create, ProcessLead
       can :create, :registrations_controller
-      can [:create, :solved], RoadsideAssistance
+      can [:create, :solved], RoadsideAssistance #quitar el solved, es público para admins
       can [:create, :destroy], :sessions_controller
-      can :active, User
+      can :active, User #agregar show para consultar su perfil, quitar, es para el admin
     end
 
 

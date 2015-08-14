@@ -1,4 +1,6 @@
 class InsurancePricesController < ApplicationController
+  authorize_resource
+
   before_action :set_insurance_price, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token
 

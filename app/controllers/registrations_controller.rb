@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  authorize_resource
+  authorize_resource :class => false
   #before_filter :authenticate_user!
   #skip_before_filter :verify_authenticity_token, :only => [:create]
   before_filter :update_sanitized_params, if: :devise_controller?

@@ -15,13 +15,13 @@ class Ability
       can :manage, InsurancePrice
       can :manage, Lead
       can :manage, Location
-      can :manage, :password
+      can :manage, :passwords_controller
       can :manage, Perk
       can :manage, ProcessLead
-      can :manage, :registration
+      can :manage, :registrations_controller
       can :manage, Ride
       can :manage, RoadsideAssistance
-      can :manage, :session
+      can :manage, :sessions_controller
       can :manage, User
       can :manage, Vehicle
     else
@@ -35,12 +35,12 @@ class Ability
       can :read, InsurancePrice #sólo lectura
       can :create, Lead
       can  [:index, :active], Location #quitar el de active, es público para admins
-      can :create, :password #agregar update, es público para admins
+      can :create, :passwords_controller #agregar update, es público para admins
       can [:index, :active], Perk #quitar active
       can :create, ProcessLead
-      can :create, :registration
+      can :create, :registrations_controller
       can [:create, :solved], RoadsideAssistance #quitar el solved, es público para admins
-      can [:create, :destroy], :session
+      can [:create, :destroy], :sessions_controller
       can :active, User #agregar show para consultar su perfil, quitar, es para el admin
     end
 

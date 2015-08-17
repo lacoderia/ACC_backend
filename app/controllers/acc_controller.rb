@@ -1,5 +1,5 @@
 class AccController < ApplicationController
-  authorize_resource
+  authorize_resource :class => false
   #before_filter :authenticate_user!
   #skip_before_filter :authenticate_user!, only: [:pico_placa]
 

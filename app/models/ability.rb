@@ -7,10 +7,10 @@ class Ability
       
       #usuario loggeado
       ## TODO revisar que lleva permisos realmente de manage
-      can :pico_placa, :acc_controller
+      can :pico_placa, :acc
       can :manage, Agreement 
-      can :manage, :carpool_controller
-      can :manage, :confirmations_controller
+      can :manage, :carpool
+      can :manage, :confirmation
       can :manage, InsuranceLead
       can :manage, InsurancePrice
       can :manage, Lead
@@ -29,7 +29,7 @@ class Ability
       user = User.new # guest user
       
       # Cualquiera no loggeado
-      can :pico_placa, :acc_controller
+      can :pico_placa, :acc
       can [:index, :active], Agreement #quitar el de active, es público para admins 
       can :create, InsuranceLead
       can :read, InsurancePrice #sólo lectura

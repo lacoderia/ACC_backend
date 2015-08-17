@@ -1,5 +1,5 @@
 class CarpoolController < ApplicationController
-  authorize_resource
+  authorize_resource :class => false
   #before_filter :authenticate_user!
 
   def index

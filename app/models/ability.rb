@@ -40,7 +40,7 @@ class Ability
       can :create, ProcessLead
       can :create, :registrations_controller
       can [:create, :solved], RoadsideAssistance #quitar el solved, es público para admins
-      can [:create, :destroy], :sessions_controller
+      can [:login, :logout], :sessions_controller
       can :active, User #agregar show para consultar su perfil, quitar, es para el admin
     end
 

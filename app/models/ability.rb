@@ -42,6 +42,7 @@ class Ability
       can [:create, :solved], RoadsideAssistance #quitar el solved, es público para admins
       can [:login, :logout], :session
       can :active, User #agregar show para consultar su perfil, quitar, es para el admin
+      can :manage, :confirmation
     end
 
 

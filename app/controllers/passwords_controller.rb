@@ -1,7 +1,7 @@
 class PasswordsController < Devise::PasswordsController
   authorize_resource :class => false
   #before_filter :authenticate_user!
-  #skip_before_filter :verify_authenticity_token, :only => [:create]
+  skip_before_filter :verify_authenticity_token, :only => [:create]
 	
   def create
     self.resource = resource_class.send_reset_password_instructions(resource_params)

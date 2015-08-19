@@ -74,6 +74,7 @@ ActiveAdmin.register User, :as => "Usuario" do
                         f.input :email
                         f.input :document_id
                         f.input :active
+                        f.input :confirmed_at, disabled: true
 			# Will preview the image when the object is edited
 		end
 		f.actions

@@ -52,6 +52,13 @@ ActiveAdmin.register User, :as => "Usuario" do
 		    check_box_tag "user_link_#{user.id}", "active", false, :onclick => "activeUserCheck(#{user.id}, true)" 
 		  end
                 end
+                column "Confirmado", :confirmed_at do |user|
+                  if user.confirmed_at
+                    check_box_tag "user_confirmed_#{user.id}", "confirmed", true, disabled: true
+                  else
+                    check_box_tag "user_confirmed_#{user.id}", "confirmed", false, disabled: true
+                  end
+                end
 
 		column "Vehículos", :vehicles do |user|
                   user.vehicles.map { |vehicle| vehicle.plate_number }.join("<br/>").html_safe

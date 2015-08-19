@@ -73,7 +73,7 @@ ActiveAdmin.register User, :as => "Usuario" do
                         f.input :last_name, :label => "Apellido"
                         f.input :email
                         f.input :document_id
-                        f.input :confirmed_at, :as => :string, :disabled => true
+                        f.input :confirmed_at, :as => :string, :input_html => { :readonly => true, :style => "background-color: #d3d3d3;" }
                         f.input :active
 			# Will preview the image when the object is edited
 		end

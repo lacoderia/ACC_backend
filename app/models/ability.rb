@@ -35,7 +35,7 @@ class Ability
       can :read, InsurancePrice #sólo lectura
       can :create, Lead
       can  [:index, :active], Location #quitar el de active, es público para admins
-      can :create, :password #agregar update, es público para admins
+      can :create, :update, :password #agregar update, es público para admins
       can [:index, :active], Perk #quitar active
       can :create, ProcessLead
       can :create, :registration

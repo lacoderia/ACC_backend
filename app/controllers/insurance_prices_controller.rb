@@ -66,7 +66,7 @@ class InsurancePricesController < ApplicationController
   end
 
   def table
-		@insurance_prices = InsurancePrice.all  	
+    @insurance_prices = InsurancePrice.all  	
   end
 
   private

@@ -32,7 +32,7 @@ class Ability
       can :pico_placa, :acc
       can [:index, :active], Agreement #quitar el de active, es público para admins 
       can :create, InsuranceLead
-      can :read, InsurancePrice #sólo lectura
+      can [:read, :table], InsurancePrice #sólo lectura
       can :create, Lead
       can  [:index, :active], Location #quitar el de active, es público para admins
       can [:create, :update], :password #agregar update, es público para admins
